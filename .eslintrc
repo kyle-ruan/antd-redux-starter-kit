@@ -1,6 +1,0 @@
-{
-  "extends": "eslint-config-rallycoding",
-    "rules": {
-    "arrow-body-style": 0
-  }
-}
