@@ -160,9 +160,10 @@ class ClientGrid extends Component {
         customFields.forEach((customField, index) => {
           if(visibleColumns.includes(customField.fieldName)){
             columns.push({
-              title: customField.fieldName,
+              title: <ResizeHeader column={customField.fieldName} title={customField.fieldName} />,
               dataIndex: `customFields[${index}]`,
               key: `customfield_${index}`,
+              width: grid.columns[customField.fieldName].width,
               render: cf => {
                 if(cf === null || typeof(cf) === 'undefined')  return '';
                 return cf.fieldValue;
