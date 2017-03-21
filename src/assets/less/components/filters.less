@@ -16,3 +16,19 @@
         font-weight: 700;
     }
 }
+
+
+.toggle-filter-button {
+
+    &--opened & {
+        &__arrow {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__arrow {
+        display: inline-block;
+        margin-left: 10px;
+        transition: transform ease 0.35s;
+    }
+}
