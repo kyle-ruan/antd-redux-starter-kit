@@ -21,10 +21,17 @@ class ClientList extends Component {
         <Row>
           <Col span={24}>
             <Affix>
-              <ToggleColumnButton />
-              <GoToClient />
-
-              <AdvancedOptionsButton />
+              <div className="button-bar">
+                <div className="button-bar__item">
+                  <ToggleColumnButton />
+                </div>
+                <div className="button-bar__item">
+                  <GoToClient />
+                </div>
+                <div className="button-bar__item">
+                  <AdvancedOptionsButton />
+                </div>
+              </div>
             </Affix>
           </Col>
         </Row>

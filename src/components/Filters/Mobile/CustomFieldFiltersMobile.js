@@ -4,7 +4,6 @@ import { Row, Col, Spin } from 'antd';
 import _ from 'lodash';
 import CustomField from '../CustomFields';
 import { getCustomFields, changeCustomFieldFilter } from '../../../actions';
-import Page from '../../Page';
 
 class CustomFieldFiltersMobile extends Component {
   componentDidMount() {
@@ -37,13 +36,15 @@ class CustomFieldFiltersMobile extends Component {
       return (
         <Row key={customFieldId}>
           <Col span={24} key={customFieldId}>
-            <CustomField
-              id={customFieldId}
-              type={fieldType}
-              label={fieldName}
-              value={value}
-              onChange={this.onFieldChange.bind(this)}
-            />
+            <div className="filter-block">
+              <CustomField
+                id={customFieldId}
+                type={fieldType}
+                label={fieldName}
+                value={value}
+                onChange={this.onFieldChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
       );
@@ -52,9 +53,9 @@ class CustomFieldFiltersMobile extends Component {
 
   render() {
     return (
-      <Page>
+      <div>
         {this.renderCustomFields()}
-      </Page>
+      </div>
     );
   }
 }

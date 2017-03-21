@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button } from 'antd';
+import CoreButton from '../CoreButton';
 
 const ResetButton = ({ loading, onClick }) => {
   return (
-    <Button
+    <CoreButton
       type='default'
-      icon="close-circle-o"
+      icon="times"
       onClick={onClick}
     >
       Clear Filters
-    </Button>
+    </CoreButton>
   );
 }
 

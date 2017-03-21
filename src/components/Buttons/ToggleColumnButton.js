@@ -27,7 +27,7 @@ class ToggleColumnButton extends Component {
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange.bind(this)}
       >
-        <Button type="primary">Show/Hide Fields</Button>
+        <Button size="small" type="primary">Show/Hide Fields</Button>
       </Popover>
     );
   }

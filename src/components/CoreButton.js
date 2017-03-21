@@ -9,7 +9,7 @@ const CoreButton = (props) => {
       size={props.size}
       onClick={props.onClick}
     >
-      {props.icon === '' ? null : <FaIcon type={props.icon} />}
+      {props.icon !== undefined ? <FaIcon type={props.icon} /> : null }
       <span style={ props.children === null ? {display: 'none'} : {} }>
         {props.children}
       </span>

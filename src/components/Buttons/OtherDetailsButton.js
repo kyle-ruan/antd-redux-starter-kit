@@ -27,7 +27,7 @@ export default class OtherDetailsButton extends Component {
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange.bind(this)}
       >
-        <Button className="column-list" icon="bars" />
+        <Button size="small" className="column-list" icon="bars" />
       </Popover>
     );
   }

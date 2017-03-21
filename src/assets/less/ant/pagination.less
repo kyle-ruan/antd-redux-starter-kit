@@ -6,18 +6,14 @@
     border-radius: 2px;
     height: 30px;
     font-size: 14px;
+    background-color: transparent;
     font-weight: 500;
 
     a {
         display: inline-block;
         vertical-align: middle;
-        margin-bottom: -2px;
+        
     }
-}
-
-.ant-pagination-prev, 
-.ant-pagination-next {
-    background-color: transparent;
 }
 
 .ant-pagination-prev,
@@ -25,21 +21,37 @@
     margin-right: 0px !important;
 }
 
+.ant-pagination-item-active {
+    background-color: @colour-orange;
+}
+
 .ant-pagination-prev {
     a:after {
         content: '\f104';
         .fa-icon();
-        margin-top: -3px;
+        margin-top: -2px;
+        vertical-align: middle;
         font-size: 40px !important;
     }
 }
 
 .ant-pagination-next {
     a:after {
-        content: '\f105';
-        margin-top: -3px;
-        
+        content: '\f105';        
         .fa-icon();
+        margin-top: -2px;
+        vertical-align: middle;
         font-size: 40px !important;
+    }
+}
+
+.ant-pagination.mini {
+
+    .ant-pagination-prev,
+    .ant-pagination-next,
+    .ant-pagination-item {
+        min-width: 25px;
+        height: 25px;
+        line-height: 25px;
     }
 }

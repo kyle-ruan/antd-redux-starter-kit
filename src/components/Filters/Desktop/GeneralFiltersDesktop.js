@@ -31,8 +31,8 @@ class GeneralFiltersDesktop extends Component {
     } = this.props;
     return (
       <div>
-        <Row>
-          <Col span={6}>
+        <Row gutter={20}>
+          <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
               <SiteMultiSelect
                 value={sites}
@@ -41,7 +41,7 @@ class GeneralFiltersDesktop extends Component {
               />
             </div>
           </Col>
-          <Col span={6}>
+          <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
               <ClientNameSearch
                 value={name}
@@ -49,7 +49,7 @@ class GeneralFiltersDesktop extends Component {
               />
             </div>
           </Col>
-          <Col span={6}>
+          <Col md={{span: 6}} sm={{ span: 12 }}>
             <div className="filter-block">
               <ClientDetailsSearch
                 value={details}
@@ -58,7 +58,7 @@ class GeneralFiltersDesktop extends Component {
               />
             </div>
           </Col>
-          <Col span={6}>
+          <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
               <ClientGroupMultiSelect
                 value={clientGroups}
@@ -68,8 +68,8 @@ class GeneralFiltersDesktop extends Component {
             </div>
           </Col>
         </Row>
-        <Row>
-          <Col span={6}>
+        <Row gutter={20}>
+          <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
               <MedicareSearch
                 value={medicare}
@@ -77,7 +77,7 @@ class GeneralFiltersDesktop extends Component {
               />
             </div>
           </Col>
-          <Col span={6}>
+          <Col md={{span: 6}} sm={{ span:12 }}>
             <div className="filter-block">
               <OtherDetailsSearch
                 value={others}

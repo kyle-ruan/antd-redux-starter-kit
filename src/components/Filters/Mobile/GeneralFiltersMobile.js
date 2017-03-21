@@ -31,52 +31,64 @@ class GeneralFiltersMobile extends Component {
       <div>
         <Row>
           <Col span={24}>
-            <SiteMultiSelect
-              value={sites}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <SiteMultiSelect
+                value={sites}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <ClientNameSearch
-              value={name}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <ClientNameSearch
+                value={name}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <ClientDetailsSearch
-              value={details}
-              searchFields={detailsSearchFields}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <ClientDetailsSearch
+                value={details}
+                searchFields={detailsSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <ClientGroupMultiSelect
-              value={clientGroups}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <ClientGroupMultiSelect
+                value={clientGroups}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <MedicareSearch
-              value={medicare}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <MedicareSearch
+                value={medicare}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <OtherDetailsSearch
-              value={others}
-              searchFields={othersSearchFields}
-              onChange={this.onFilterChange.bind(this)}
-            />
+            <div className="filter-block">
+              <OtherDetailsSearch
+                value={others}
+                searchFields={othersSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
       </div>
