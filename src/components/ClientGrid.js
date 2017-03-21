@@ -56,7 +56,7 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('crn'))
         columns.push({
-          title: 'CRN',
+          title: <ResizeHeader column='crn' title='CRN' />,
           dataIndex: 'crn',
           key: 'crn',
           width: 150,
@@ -66,7 +66,7 @@ class ClientGrid extends Component {
 
         if(visibleColumns.includes('externalId'))
           columns.push({
-            title: 'External ID',
+            title: <ResizeHeader column='externalId' title='External ID' />,
             dataIndex: 'externalId',
             key: 'externalId',
             width: 150,
@@ -96,45 +96,47 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('homePhone'))
         columns.push({
-          title: 'Home Phone',
+          title: <ResizeHeader column='homePhone' title='Home Phone' />,
           dataIndex: 'homePhone',
           sorter: true,
-          width: 150,
+          width: grid.columns['homePhone'].width,
           key: 'homePhone'
         });
 
       if(visibleColumns.includes('mobile'))
         columns.push({
-          title: 'Mobile',
+          title: <ResizeHeader column='mobile' title='Mobile' />,
           dataIndex: 'mobile',
           sorter: true,
-          width: 150,
+          width: grid.columns['mobile'].width,
           key: 'mobile'
         });
 
       if(visibleColumns.includes('email'))
         columns.push({
-          title: 'Email',
+          title: <ResizeHeader column='email' title='Email' />,
           dataIndex: 'email',
           sorter: true,
-          email: 200,
+          width: grid.columns['email'].width,
           key: 'email'
         });
 
       if(visibleColumns.includes('medicareCardNumber'))
         columns.push({
-          title: 'Medicare Card',
+          title: <ResizeHeader column='medicareCardNumber' title='Medicare Card Number' />,
           dataIndex: 'medicareCardNumber',
           sorter: true,
+          width: grid.columns['medicareCardNumber'].width,
           key: 'medicareCardNumber'
         });
 
       if(visibleColumns.includes('siteId'))
         columns.push({
-          title: 'Site',
+          title: <ResizeHeader column='siteId' title='Site' />,
           dataIndex: 'siteId',
           key: 'siteId',
           sorter: true,
+          width: grid.columns['siteId'].width,
           render: siteId => {
             if(siteId === 0 || sitesLoading) return '';
             return sites.find(site => site.value === siteId.toString()).text;
@@ -143,9 +145,10 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('groupId'))
         columns.push({
-          title: 'Group',
+          title: <ResizeHeader column='groupId' title='Group' />,
           dataIndex: 'groupId',
           key: 'groupId',
+          width: grid.columns['groupId'].width,
           sorter: true,
           render: groupId => {
             if(groupId === 0 || clientGroupsLoading) return '';

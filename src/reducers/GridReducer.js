@@ -1,7 +1,15 @@
 const INITIAL_STATE = {
   columns: {
+    crn: { width: 100 },
+    externalId: { width: 120 },
     name: { width: 200 },
-    address: { width: 200 }
+    address: { width: 200 },
+    homePhone: { width: 120 },
+    mobile: { width: 120 },
+    email: { width: 150 },
+    medicareCardNumber: { width: 175 },
+    siteId: { width: 150 },
+    groupId: { width: 150 }
   }
 };
 
