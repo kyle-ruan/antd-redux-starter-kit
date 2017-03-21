@@ -7,6 +7,7 @@ const CoreButton = (props) => {
     <Button
       type={props.type}
       size={props.size}
+      className={props.className}
       onClick={props.onClick}
     >
       {props.icon !== undefined ? <FaIcon type={props.icon} /> : null }

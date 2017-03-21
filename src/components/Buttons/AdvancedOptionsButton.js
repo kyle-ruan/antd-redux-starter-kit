@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleFilters } from '../../actions';
 import CoreButton from '../CoreButton';
+import FaIcon from '../FaIcon';
 
 class AdvancedButton extends Component {
   render() {
-    const { toggleFilters } = this.props;
+    const { showFilters, toggleFilters } = this.props;
+
     return (
       <CoreButton
         size="small"
         type='default'
         icon="filter"
+        className={ '' + (showFilters ? 'toggle-filter-button--opened' : '')}
         onClick={() => {
           window.scrollTo(0, 0);
           toggleFilters();        
         }}
       >
-        Filters
+        Filters <span className="toggle-filter-button__arrow"><FaIcon type="angle-down" /></span>
       </CoreButton>
     );
   }
