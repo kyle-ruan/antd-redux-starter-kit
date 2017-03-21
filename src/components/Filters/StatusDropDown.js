@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Select } from 'antd';
 import { apiConfig } from '../../configs';
+import { cache } from '../../utils';
 
 const { Option } = Select;
 
@@ -15,13 +16,23 @@ class StatusDropDown extends Component {
   }
 
   componentDidMount() {
-    const { coreplusWebClientURL, headers } = apiConfig;
-    const requestUrl = `${coreplusWebClientURL}api/Client/ClientStatus`;
+    const { showFilters } = this.props;
+    const statuses = cache.get('status');
 
-    axios.get(requestUrl, { headers })
-      .then(({data}) => {
-        this.setState({ options: data });
-      });
+    if(statuses === null) {
+      const { coreplusWebClientURL, headers } = apiConfig;
+      const requestUrl = `${coreplusWebClientURL}api/Client/ClientStatus`;
+
+      axios.get(requestUrl, { headers })
+        .then(({data}) => {
+          cache.set('status', data);
+          if(showFilters)
+            this.setState({ options: data });
+        });
+    } else {
+      if(showFilters)
+        this.setState({ options: statuses });
+    }
   }
 
   renderOptions() {

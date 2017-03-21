@@ -9,6 +9,8 @@ class VisibleColumnsContent extends Component {
   constructor(props) {
     super(props);
     this.options = [
+      { label: 'CRN', value: 'crn' },
+      { label: 'External ID', value: 'externalId' },
       { label: 'Name', value: 'name', disabled: true },
       { label: 'Address', value: 'streetAddress' },
       { label: 'Home Phone', value: 'homePhone' },
@@ -19,7 +21,7 @@ class VisibleColumnsContent extends Component {
       { label: 'Site', value: 'siteId' }
     ];
   }
-  
+
   handleChange(checkedValues) {
     this.props.toggleColumns(checkedValues);
   }

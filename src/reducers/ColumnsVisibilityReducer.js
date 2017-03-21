@@ -1,4 +1,6 @@
 const INITIAL_STATE = {
+  crn: false,
+  externalId: false,
   name: true,
   streetAddress: true,
   homePhone: true,

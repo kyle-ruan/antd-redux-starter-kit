@@ -3,10 +3,12 @@ import { apiConfig, reportConfig } from '../configs';
 
 const { coreplusWebClientURL, headers } = apiConfig;
 
-export const getClientDataSource = (pageNumber) => {
+export const getClientDataSource = (pageNumber, sorter = null) => {
   return (dispatch, getState) => {
     const { pageSize } = reportConfig;
-
+    if (sorter !== null && typeof(sorter.field) === 'undefined') {
+      sorter = null;
+    }
     dispatch({
       type: 'CLIENT_START_LOADING',
       payload: { pageNumber, pageSize }
@@ -14,15 +16,32 @@ export const getClientDataSource = (pageNumber) => {
 
     const requestUrl = `${coreplusWebClientURL}api/Client/GetClientListDataSource?pageNumber=${pageNumber}&pageSize=${pageSize}`;
 
-    const { filters: { keyword, sites, clientGroups, status, customFieldFilters } } = getState();
+    const {
+      filters: {
+        keyword, name, medicare,
+        details, detailsSearchFields, others,
+        othersSearchFields, sites, clientGroups,
+        status, customFieldFilters, showFilters
+      }
+    } = getState();
 
+    if (showFilters) {
+      dispatch({ type: 'TOGGLE_FILTERS'});
+    }
     axios.post(requestUrl, JSON.stringify({
-      Keyword: keyword,
-      ClientGroups: clientGroups,
-      Sites: sites,
-      Status: status,
-      CustomFieldFilters: customFieldFilters.map(({ id, value }) => {
-        return { Id: id, Value: value };
+      keyword,
+      name,
+      medicare,
+      details,
+      detailsSearchFields,
+      others,
+      othersSearchFields,
+      clientGroups,
+      sites,
+      status,
+      sorter,
+      customFieldFilters: customFieldFilters.map(({ id, value }) => {
+        return { id, value };
       })
     }), { headers })
       .then(({ data }) => {
@@ -45,19 +64,46 @@ export const getClientDataSource = (pageNumber) => {
   };
 };
 
+export const getClientGroups = () => {
+  return (dispatch) => {
+    dispatch({ type: 'CLIENT_GROUPS_START_LOADING' });
+    const requestUrl = `${coreplusWebClientURL}api/Client/ClientGroups`;
+    axios.get(requestUrl, { headers })
+      .then(({data}) => {
+        dispatch({
+          type: 'CLIENT_GROUPS_FINISH_LOADING',
+          payload: { clientGroups: data }
+        })
+      });
+  };
+};
+
+export const getSites = () => {
+  return (dispatch) => {
+    dispatch({ type: 'SITES_START_LOADING' });
+    const requestUrl = `${coreplusWebClientURL}api/PracticeLocation/PracticeLocations`;
+
+    axios.get(requestUrl, { headers })
+      .then(({data}) => {
+        dispatch({
+          type: 'SITES_FINISH_LOADING',
+          payload: { sites: data }
+        });
+      });
+  }
+};
+
 export const getCustomFields = () => {
   return (dispatch) => {
     dispatch({ type: 'CUSTOM_FIELDS_START_LOADING' });
     const requestUrl = `${coreplusWebClientURL}api/Client/GetCustomFieldList`;
 
-    axios.get(requestUrl, { headers})
+    axios.get(requestUrl, { headers })
       .then(({ data }) => {
         dispatch({
           type: 'CUSTOM_FIELDS_FINISH_LOADING',
           payload: { customFields: data }
         });
-        dispatch({ type: 'ON_FILTER_LOAD' });
-        dispatch(getClientDataSource(1));
       });
   };
 };

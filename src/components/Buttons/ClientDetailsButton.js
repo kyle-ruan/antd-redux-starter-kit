@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Popover, Button } from 'antd';
-import VisibleColumnsContent from './Popovers/VisibleColumnsContent';
+import ClientDetailsContent from './Popovers/ClientDetailsContent';
 
-class ToggleColumnButton extends Component {
+export default class ClientDetailsButton extends Component {
   constructor(props) {
     super(props);
     this.state = { visible: false };
@@ -15,22 +15,20 @@ class ToggleColumnButton extends Component {
   render() {
     const content = (
       <div>
-        <VisibleColumnsContent />
+        <ClientDetailsContent searchFields={this.props.searchFields}/>
       </div>
     );
     return (
       <Popover
-        placement="bottom"
+        placement="rightTop"
         content={content}
-        title="Show/Hide Columns"
+        title="Filter By"
         trigger="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange.bind(this)}
       >
-        <Button type="primary" icon="bars">Show/Hide Columns</Button>
+        <Button className="column-list" icon="bars" />
       </Popover>
     );
   }
 }
-
-export { ToggleColumnButton };

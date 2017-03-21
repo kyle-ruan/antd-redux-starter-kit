@@ -164,7 +164,7 @@ module.exports = {
       // Remember to add the new extension(s) to the "url" loader exclusion list.
       {
         test: /\.less$/,
-        loader: 'style!css!postcss!less?{ modifyVars: { }}'
+        loader: 'style!css!postcss!less?{ modifyVars: { "@primary-color": "#f8a94c" }}'
       }
     ]
   },

@@ -4,7 +4,7 @@ import { Button } from 'antd';
 const ResetButton = ({ loading, onClick }) => {
   return (
     <Button
-      type='primary'
+      type='default'
       icon="close-circle-o"
       onClick={onClick}
     >

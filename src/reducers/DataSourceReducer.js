@@ -6,10 +6,9 @@ const INITIAL_STATE = {
     currentPage: 1,
     pageSize: 50
   },
-  customFields: {
-    data: [],
-    loading: false
-  }
+  clientGroups: { data: [], loading: false },
+  sites: { data: [], loading: false },
+  customFields: { data: [], loading: false }
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,6 +33,44 @@ export default (state = INITIAL_STATE, action) => {
           data: clients,
           loading: false,
           total
+        }
+      };
+
+    case 'CLIENT_GROUPS_START_LOADING':
+      return {
+        ...state,
+        clientGroups: {
+          ...state.clientGroups,
+          loading: true
+        }
+      };
+
+    case 'CLIENT_GROUPS_FINISH_LOADING':
+      return {
+        ...state,
+        clientGroups: {
+          ...state.clientGroups,
+          data: action.payload.clientGroups,
+          loading: false
+        }
+      };
+
+    case 'SITES_START_LOADING':
+      return {
+        ...state,
+        sites: {
+          ...state.sites,
+          loading: true
+        }
+      };
+
+    case 'SITES_FINISH_LOADING':
+      return {
+        ...state,
+        sites: {
+          ...state.sites,
+          data: action.payload.sites,
+          loading: false
         }
       };
 

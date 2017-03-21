@@ -1,33 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Select } from 'antd';
-import { apiConfig } from '../../configs';
-import { cache } from '../../utils';
+import { connect } from 'react-redux';
+import { Select, Icon, Tooltip } from 'antd';
+import { getClientGroups } from '../../actions';
 
 const { Option } = Select;
 
-class ClientGroupMultiSelect extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      options: []
-    };
-  }
-
-  componentDidMount() {
-    const { coreplusWebClientURL, headers } = apiConfig;
-    const requestUrl = `${coreplusWebClientURL}api/Client/ClientGroups`;
-
-    axios.get(requestUrl, { headers })
-      .then(({data}) => {
-        cache.set('clientGroups', data);
-        this.setState({ options: data });
-      });
-  }
-
+class ClientGroups extends Component {
   renderOptions() {
-    return this.state.options.map((option) => {
+    return this.props.clientGroups.map((option) => {
       return (
         <Option
           key={option.value + option.text}
@@ -40,22 +20,39 @@ class ClientGroupMultiSelect extends Component {
   }
 
   render() {
+    const { value, loading, onChange, getClientGroups } = this.props;
     return (
       <div>
         <label>Client Groups: </label>
         <Select
           style={{ width: 200 }}
            multiple
+           value={value}
            filterOption={(inputValue, option) => {
              return option.props.children.toLowerCase().indexOf(inputValue.toLowerCase()) > -1;
            }}
-           onChange={(values) => {this.props.onChange('clientGroups', values)}}
+           onChange={(values) => {onChange('clientGroups', values)}}
          >
            { this.renderOptions() }
          </Select>
+         <Tooltip placement="right" title="You can click here to reload client groups.">
+           <Icon type="reload" spin={loading} onClick={() => getClientGroups() }/>
+         </Tooltip>
       </div>
     );
   }
 }
+
+const mapStateToProps = ({ dataSource: { clientGroups } }) => {
+  return {
+    clientGroups: clientGroups.data,
+    loading: clientGroups.loading
+  };
+}
+
+const ClientGroupMultiSelect = connect(
+  mapStateToProps,
+  { getClientGroups }
+)(ClientGroups);
 
 export { ClientGroupMultiSelect };

@@ -7,8 +7,8 @@ const NumberField = ({ id, label, value, onChange }) => {
       <label>{label}: </label>
       <InputNumber
         style={{ width: 200 }}
-        value={value}
-        onChange={(e) => { onChange(id, e.target.value)}}
+        onChange={(value) => { debugger;onChange(id, value)}}
+        value={convertInt(value)}
         onKeyUp={(e) => {
           if(e.keyCode === 8)
             onChange(id, e.target.value);
@@ -17,5 +17,11 @@ const NumberField = ({ id, label, value, onChange }) => {
     </div>
   );
 };
+
+function convertInt(val) {
+  if(isNaN(val)) return '';
+
+  return val || '';
+}
 
 export default NumberField;

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Spin } from 'antd';
+import Collapse from 'react-collapse';
 import _ from 'lodash';
-import CustomField from './Filters/CustomFields';
-import { getCustomFields, changeCustomFieldFilter } from '../actions';
+import CustomField from '../CustomFields';
+import { getCustomFields, changeCustomFieldFilter } from '../../../actions';
+import Page from '../../Page';
 
-class CustomFieldFilters extends Component {
+class CustomFieldFiltersDesktop extends Component {
   componentDidMount() {
-    this.props.getCustomFields();
+    const { customFields } = this.props;
+    if(customFields.length === 0)
+      this.props.getCustomFields();
   }
 
   onFieldChange(id, value) {
@@ -54,17 +58,31 @@ class CustomFieldFilters extends Component {
   }
 
   render() {
+    const { showFilters, customFields } = this.props;
     return (
-      <div>
-        {this.renderCustomFields()}
-      </div>
+      <Collapse isOpened={showFilters && customFields.length>0 }>
+        <Page>
+          {this.renderCustomFields()}
+        </Page>
+      </Collapse>
     );
   }
 }
 
-const mapStateToProps = ({ dataSource: { customFields }, filters: { customFieldFilters} }) => {
+const mapStateToProps = ({
+  dataSource: { customFields },
+  filters: { customFieldFilters, showFilters }
+}) => {
   const { data, loading } = customFields;
-  return { customFields: data, loading, filters: customFieldFilters };
+  return {
+    customFields: data,
+    loading,
+    filters: customFieldFilters,
+    showFilters
+  };
 };
 
-export default connect(mapStateToProps, { getCustomFields, changeCustomFieldFilter })(CustomFieldFilters);
+export default connect(
+  mapStateToProps,
+  { getCustomFields, changeCustomFieldFilter }
+)(CustomFieldFiltersDesktop);

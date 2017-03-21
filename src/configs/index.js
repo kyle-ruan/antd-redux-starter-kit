@@ -1,7 +1,15 @@
+// export const apiConfig = {
+//   coreplusWebClientURL: "http://192.168.2.33:30721/",
+//   headers: {
+//     "X-SessionId": "20E47C21-00D1-4360-96FD-56C8223147AC",
+//     "content-type": "application/json"
+//   }
+// };
+
 export const apiConfig = {
-  coreplusWebClientURL: "http://192.168.2.33:30721/",
+  coreplusWebClientURL: "https://dev2.coreplus.com.au/",
   headers: {
-    "X-SessionId": "71A44477-CA7A-4C17-BB3D-80BC83BE4A59",
+    "X-SessionId": "20E47C21-00D1-4360-96FD-56C8223147AC",
     "content-type": "application/json"
   }
 };

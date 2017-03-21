@@ -2,16 +2,23 @@ import { cache } from '../utils';
 
 const INITIAL_STATE = {
   keyword: '',
+  name: '',
+  medicare: '',
+  details: '',
+  detailsSearchFields: [],
+  others: '',
+  othersSearchFields: [],
   sites: [],
   clientGroups: [],
   status: 0,
-  customFieldFilters: []
+  customFieldFilters: [],
+  showFilters: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'ON_FILTER_LOAD':
-      return cache.get('filters_client_list') || INITIAL_STATE;
+    case 'TOGGLE_FILTERS':
+      return { ...state, showFilters: !state.showFilters };
 
     case 'ON_FILTER_CHANGE':
       const newState_1 = { ...state, [action.payload.name]: action.payload.value };
@@ -37,7 +44,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case 'RESET_FILTERS':
       return INITIAL_STATE;
-      
+
     default:
       return state;
   }
