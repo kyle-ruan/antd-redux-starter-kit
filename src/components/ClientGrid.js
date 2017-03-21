@@ -173,14 +173,13 @@ class ClientGrid extends Component {
         });
       }
 
-      columns.push({
-        title: 'Actions',
-        dataIndex: '',
-        key: 'x',
-        width: 100,
-        fixed: 'right',
-        render: () => <a href="#">View Details</a>
-      });
+      // columns.push({
+      //   title: 'Actions',
+      //   dataIndex: '',
+      //   key: 'x',
+      //   fixed: 'right',
+      //   render: () => <a href="#">View Details</a>
+      // });
 
       return columns;
     }
