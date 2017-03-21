@@ -8,7 +8,6 @@ class AdvancedButton extends Component {
   render() {
     const { showFilters, toggleFilters } = this.props;
 
-    console.log(showFilters);
     return (
       <CoreButton
         size="small"
