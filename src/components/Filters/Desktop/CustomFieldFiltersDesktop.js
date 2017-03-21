@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Spin } from 'antd';
-import Collapse from 'react-collapse';
 import _ from 'lodash';
 import CustomField from '../CustomFields';
 import { getCustomFields, changeCustomFieldFilter } from '../../../actions';
-import Page from '../../Page';
+
 
 class CustomFieldFiltersDesktop extends Component {
   componentDidMount() {
@@ -37,13 +36,15 @@ class CustomFieldFiltersDesktop extends Component {
       }
       return (
         <Col span={6} key={customFieldId}>
-          <CustomField
-            id={customFieldId}
-            type={fieldType}
-            label={fieldName}
-            value={value}
-            onChange={this.onFieldChange.bind(this)}
-          />
+          <div className="filter-block">
+            <CustomField
+              id={customFieldId}
+              type={fieldType}
+              label={fieldName}
+              value={value}
+              onChange={this.onFieldChange.bind(this)}
+            />
+          </div>
         </Col>
       );
     });
@@ -60,11 +61,9 @@ class CustomFieldFiltersDesktop extends Component {
   render() {
     const { showFilters, customFields } = this.props;
     return (
-      <Collapse isOpened={showFilters && customFields.length>0 }>
-        <Page>
-          {this.renderCustomFields()}
-        </Page>
-      </Collapse>
+      <div>
+        {this.renderCustomFields()}
+      </div>
     );
   }
 }

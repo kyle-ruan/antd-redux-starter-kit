@@ -6,6 +6,11 @@ import CustomFieldFiltersDesktop from './Filters/Desktop/CustomFieldFiltersDeskt
 import GeneralFiltersMobile from './Filters/Mobile/GeneralFiltersMobile';
 import CustomFieldFiltersMobile from './Filters/Mobile/CustomFieldFiltersMobile';
 import { toggleFilters, getClientDataSource } from '../actions';
+import Collapse from 'react-collapse';
+import {
+  ReloadButton,
+  ResetButton
+} from './Buttons';
 
 class AllFilters extends Component {
   renderFilters() {
@@ -14,11 +19,30 @@ class AllFilters extends Component {
     if (!isMobile) {
       return (
         <div>
-          <div style={{ margin: 5 }}>
-            <GeneralFiltersDesktop />
-          </div>
+          <Collapse isOpened={showFilters}>
+            <div className="client-list__filters">
+              <div className="panel panel--colour-blue panel--no-panel-corner">
+                <div className="panel-heading">
+                    Filters
+                </div>
+                <div className="panel-body-wrapper">
+                  <div className="panel-body-inner">
+                    <GeneralFiltersDesktop />
 
-          <CustomFieldFiltersDesktop />
+                    <hr className="page-box__sep" />
+
+                    <CustomFieldFiltersDesktop />
+
+                    <div className="page-box__buttons">
+                      <ReloadButton
+                      />
+                      <ResetButton />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Collapse>
         </div>
       );
     }

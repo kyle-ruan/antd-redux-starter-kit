@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
-import Collapse from 'react-collapse';
+
 import {
   ClientNameSearch,
   MedicareSearch,
@@ -30,52 +30,64 @@ class GeneralFiltersDesktop extends Component {
       clientGroups
     } = this.props;
     return (
-      <Collapse isOpened={showFilters}>
+      <div>
         <Row>
-          <Col span={8}>
-            <SiteMultiSelect
-              value={sites}
-              showFilters={showFilters}
-              onChange={this.onFilterChange.bind(this)}
-            />
+          <Col span={6}>
+            <div className="filter-block">
+              <SiteMultiSelect
+                value={sites}
+                showFilters={showFilters}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
-          <Col span={8}>
-            <ClientNameSearch
-              value={name}
-              onChange={this.onFilterChange.bind(this)}
-            />
+          <Col span={6}>
+            <div className="filter-block">
+              <ClientNameSearch
+                value={name}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
-          <Col span={8}>
-            <ClientDetailsSearch
-              value={details}
-              searchFields={detailsSearchFields}
-              onChange={this.onFilterChange.bind(this)}
-            />
+          <Col span={6}>
+            <div className="filter-block">
+              <ClientDetailsSearch
+                value={details}
+                searchFields={detailsSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
+          </Col>
+          <Col span={6}>
+            <div className="filter-block">
+              <ClientGroupMultiSelect
+                value={clientGroups}
+                showFilters={showFilters}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
         <Row>
-          <Col span={8}>
-            <ClientGroupMultiSelect
-              value={clientGroups}
-              showFilters={showFilters}
-              onChange={this.onFilterChange.bind(this)}
-            />
+          <Col span={6}>
+            <div className="filter-block">
+              <MedicareSearch
+                value={medicare}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
-          <Col span={8}>
-            <MedicareSearch
-              value={medicare}
-              onChange={this.onFilterChange.bind(this)}
-            />
-          </Col>
-          <Col span={8}>
-            <OtherDetailsSearch
-              value={others}
-              searchFields={othersSearchFields}
-              onChange={this.onFilterChange.bind(this)}
-            />
+          <Col span={6}>
+            <div className="filter-block">
+              <OtherDetailsSearch
+                value={others}
+                searchFields={othersSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
           </Col>
         </Row>
-      </Collapse>
+      </div>
     );
   }
 }
