@@ -9,7 +9,7 @@ class OtherDetailsContent extends Component {
   constructor(props) {
     super(props);
     this.options = [
-      { label: 'CRN', value: 'CRN' },
+      { label: 'CRN', value: 'crn' },
       { label: 'External ID', value: 'external_id' }
     ];
   }

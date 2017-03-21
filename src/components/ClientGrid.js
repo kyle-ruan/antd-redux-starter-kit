@@ -221,7 +221,7 @@ class ClientGrid extends Component {
     } = this.props;
     const pagination = { current, total, pageSize };
     const windowWidth = window.innerWidth;
-    const scroll = visibleColumns.length > 8 ? { x: windowWidth + 300 } : { x: null };
+    const scroll = visibleColumns.length > 8 ? { x: windowWidth + (visibleColumns.length - 8) * 150  } : { x: null };
     const columns= this.setColumns();
     return (
       <Table
