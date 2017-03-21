@@ -7,7 +7,7 @@ const NumberField = ({ id, label, value, onChange }) => {
       <label>{label}: </label>
       <InputNumber
         style={{ width: 200 }}
-        onChange={(value) => { debugger;onChange(id, value)}}
+        onChange={(value) => {onChange(id, value)}}
         value={convertInt(value)}
         onKeyUp={(e) => {
           if(e.keyCode === 8)

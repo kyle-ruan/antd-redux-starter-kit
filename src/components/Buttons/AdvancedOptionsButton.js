@@ -11,7 +11,10 @@ class AdvancedButton extends Component {
         size="small"
         type='default'
         icon="filter"
-        onClick={toggleFilters.bind(this)}
+        onClick={() => {
+          window.scrollTo(0, 0);
+          toggleFilters();        
+        }}
       >
         Filters
       </CoreButton>

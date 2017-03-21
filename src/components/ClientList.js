@@ -35,7 +35,7 @@ class ClientList extends Component {
             </Affix>
           </Col>
         </Row>
-        
+
         <AllFilters />
 
         <Row>
