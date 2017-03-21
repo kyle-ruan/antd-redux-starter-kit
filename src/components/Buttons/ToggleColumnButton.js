@@ -22,12 +22,12 @@ class ToggleColumnButton extends Component {
       <Popover
         placement="bottom"
         content={content}
-        title="Show/Hide Columns"
+        title="Show/Hide Fields"
         trigger="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange.bind(this)}
       >
-        <Button type="primary" icon="bars">Show/Hide Columns</Button>
+        <Button type="primary">Show/Hide Fields</Button>
       </Popover>
     );
   }

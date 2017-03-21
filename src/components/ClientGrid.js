@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'antd';
+import { Table, Row, Col } from 'antd';
+
 import ResizeHeader from './Grid/ResizeHeader';
 import {
-  ReloadButton,
-  ResetButton,
-  AdvancedOptionsButton
+  StatusButtonGroup
 } from './Buttons';
 import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
 
@@ -124,7 +123,7 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('medicareCardNumber'))
         columns.push({
-          title: 'Meidcare Card',
+          title: 'Medicare Card',
           dataIndex: 'medicareCardNumber',
           sorter: true,
           key: 'medicareCardNumber'
@@ -182,16 +181,29 @@ class ClientGrid extends Component {
       return columns;
     }
 
+
+  renderPagingInfo() {
+    const { total, current, pageSize } = this.props;
+    const from = (current - 1) * pageSize + 1;
+    const to = (from + pageSize) > total ? total: (from + pageSize - 1);
+
+    return (<b className="ant-table-row-count">View {from} - { to } of { total } clients</b>);
+  }
+
   renderGridTitle() {
     const { clientsLoading } = this.props;
     return (
       <div>
-        <ReloadButton
-          loading={clientsLoading}
-          onClick={this.props.getClientDataSource.bind(this, 1)}
-        />
-        <AdvancedOptionsButton />
-        <ResetButton onClick={this.props.resetFilters.bind(this)}/>
+        <div className="ant-table-toolbar-tabs">
+          <Row>
+            <Col className="ant-table-toolbar-tabs__left" span={14}>
+              <StatusButtonGroup />
+            </Col>
+            <Col className="ant-table-toolbar-tabs__right" span={10}>
+              {this.renderPagingInfo()}
+            </Col>
+          </Row>          
+        </div>
       </div>
     );
   }

@@ -8,7 +8,7 @@ const ResetButton = ({ loading, onClick }) => {
       icon="close-circle-o"
       onClick={onClick}
     >
-      Reset Filters
+      Clear Filters
     </Button>
   );
 }

@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Icon } from 'antd';
+import { Icon } from 'antd';
 import { toggleFilters } from '../../actions';
+import CoreButton from '../CoreButton';
+import FaIcon from '../FaIcon';
 
 class AdvancedButton extends Component {
   render() {
     const { showFilters, toggleFilters } = this.props;
     return (
-      <Button
+      <CoreButton
         size="small"
         type='default'
         onClick={toggleFilters.bind(this)}
       >
-        <Icon type={ !showFilters ? "up" : "down" } /> Advanced Options
-      </Button>
+        <FaIcon type="filter" /> Filters
+      </CoreButton>
     );
   }
 }
