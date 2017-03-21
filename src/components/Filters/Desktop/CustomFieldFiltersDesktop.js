@@ -35,7 +35,7 @@ class CustomFieldFiltersDesktop extends Component {
         value = filter.value;
       }
       return (
-        <Col span={6} key={customFieldId}>
+        <Col md={{span: 6}} sm={{ span: 12 }} key={customFieldId}>
           <div className="filter-block">
             <CustomField
               id={customFieldId}
@@ -51,7 +51,7 @@ class CustomFieldFiltersDesktop extends Component {
 
     return _.chunk(items, 4).map((item, index) => {
       return (
-        <Row key={index}>
+        <Row gutter={20} key={index}>
           {item}
         </Row>
       );

@@ -23,7 +23,7 @@ class AllFilters extends Component {
             <div className="client-list__filters">
               <div className="panel panel--colour-blue panel--no-panel-corner">
                 <div className="panel-heading">
-                    Filters
+                  Filters
                 </div>
                 <div className="panel-body-wrapper">
                   <div className="panel-body-inner">
@@ -64,11 +64,12 @@ class AllFilters extends Component {
             type="primary"
             onClick={() => { getClientDataSource(1) }}
           >
-            Reload
+            Apply
           </Button>
         ]}
       >
         <GeneralFiltersMobile />
+        <hr className="page-box__sep" />
         <CustomFieldFiltersMobile />
       </Modal>
     ) ;

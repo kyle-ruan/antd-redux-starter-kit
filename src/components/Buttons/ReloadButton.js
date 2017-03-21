@@ -1,17 +1,18 @@
 import React from 'react';
-import { Button, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
+import CoreButton from '../CoreButton';
 
 const ReloadButton = ({ loading, onClick }) => {
   return (
     <Tooltip placement="topLeft" title="You can also hit Enter to reload">
-      <Button
+      <CoreButton
         type='primary'
-        icon="sync"
+        icon="check"
         loading={loading}
         onClick={onClick}
       >
         Update
-      </Button>
+      </CoreButton>
     </Tooltip>
   );
 }

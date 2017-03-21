@@ -26,7 +26,7 @@ class CoreButton extends Button {
   
     render() {
         return (<Button type={this.props.type} size={this.props.size} onClick={this.props.onClick}>
-            {this.state.icon}<span style={ this.state.text === '' ? {display: 'none'} : {} }>{ this.state.text}</span>
+            {this.state.icon} <span style={ this.state.text === '' ? {display: 'none'} : {} }>{ this.state.text}</span> 
         </Button>)
     }
 }
