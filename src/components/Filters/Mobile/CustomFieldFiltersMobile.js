@@ -4,7 +4,6 @@ import { Row, Col, Spin } from 'antd';
 import _ from 'lodash';
 import CustomField from '../CustomFields';
 import { getCustomFields, changeCustomFieldFilter } from '../../../actions';
-import Page from '../../Page';
 
 class CustomFieldFiltersMobile extends Component {
   componentDidMount() {

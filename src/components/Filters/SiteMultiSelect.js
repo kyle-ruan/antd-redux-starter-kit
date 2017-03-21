@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Select, Icon, Tooltip } from 'antd';
+import { Select, Icon, Input, Tooltip, Button } from 'antd';
 import { getSites } from '../../actions';
+const InputGroup = Input.Group;
 
 const { Option } = Select;
 class Sites extends Component {
@@ -23,20 +24,24 @@ class Sites extends Component {
     return (
       <div>
         <label>Sites: </label>
-        <Select
-          style={{ width: 200 }}
-           multiple
-           value={value}
-           filterOption={(inputValue, option) => {
-             return option.props.children.toLowerCase().indexOf(inputValue.toLowerCase()) > -1;
-           }}
-           onChange={(values) => {onChange('sites', values)}}
-         >
-           { this.renderOptions() }
-         </Select>
-         <Tooltip placement="right" title="You can click here to reload sites.">
-           <Icon type="reload" spin={loading} onClick={() => getSites() }/>
-         </Tooltip>
+        <InputGroup compact>
+          <Select
+            style={{ width: 200 }}
+             multiple
+             value={value}
+             filterOption={(inputValue, option) => {
+               return option.props.children.toLowerCase().indexOf(inputValue.toLowerCase()) > -1;
+             }}
+             onChange={(values) => {onChange('sites', values)}}
+           >
+             { this.renderOptions() }
+          </Select>
+          <Tooltip placement="right" title="You can click here to reload sites.">
+            <Button size="small">
+              <Icon type="reload" spin={loading} onClick={() => getSites() }/>
+            </Button>
+          </Tooltip>
+        </InputGroup>
       </div>
     );
   }

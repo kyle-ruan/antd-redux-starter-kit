@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleFilters } from '../../actions';
 import CoreButton from '../CoreButton';
-import FaIcon from '../FaIcon';
 
 class AdvancedButton extends Component {
   render() {
@@ -11,9 +10,10 @@ class AdvancedButton extends Component {
       <CoreButton
         size="small"
         type='default'
+        icon="filter"
         onClick={toggleFilters.bind(this)}
       >
-        <FaIcon type="filter" /> Filters
+        Filters
       </CoreButton>
     );
   }
