@@ -59,7 +59,6 @@ class CustomFieldFiltersDesktop extends Component {
   }
 
   render() {
-    const { showFilters, customFields } = this.props;
     return (
       <div>
         {this.renderCustomFields()}

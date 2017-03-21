@@ -191,7 +191,6 @@ class ClientGrid extends Component {
   }
 
   renderGridTitle() {
-    const { clientsLoading } = this.props;
     return (
       <div>
         <div className="ant-table-toolbar-tabs">
@@ -202,7 +201,7 @@ class ClientGrid extends Component {
             <Col className="ant-table-toolbar-tabs__right" span={10}>
               {this.renderPagingInfo()}
             </Col>
-          </Row>          
+          </Row>
         </div>
       </div>
     );

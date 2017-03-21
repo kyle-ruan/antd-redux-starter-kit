@@ -5,7 +5,7 @@ import GeneralFiltersDesktop from './Filters/Desktop/GeneralFiltersDesktop';
 import CustomFieldFiltersDesktop from './Filters/Desktop/CustomFieldFiltersDesktop';
 import GeneralFiltersMobile from './Filters/Mobile/GeneralFiltersMobile';
 import CustomFieldFiltersMobile from './Filters/Mobile/CustomFieldFiltersMobile';
-import { toggleFilters, getClientDataSource } from '../actions';
+import { toggleFilters, getClientDataSource, resetFilters } from '../actions';
 import Collapse from 'react-collapse';
 import {
   ReloadButton,
@@ -15,7 +15,7 @@ import {
 class AllFilters extends Component {
   renderFilters() {
     const isMobile = window.innerWidth <= 668;
-    const { showFilters, toggleFilters, getClientDataSource } = this.props;
+    const { showFilters, toggleFilters, getClientDataSource, resetFilters } = this.props;
     if (!isMobile) {
       return (
         <div>
@@ -34,9 +34,8 @@ class AllFilters extends Component {
                     <CustomFieldFiltersDesktop />
 
                     <div className="page-box__buttons">
-                      <ReloadButton
-                      />
-                      <ResetButton />
+                      <ReloadButton onClick={() => getClientDataSource(1)}/>
+                      <ResetButton onClick={() => resetFilters()} />
                     </div>
                   </div>
                 </div>
@@ -83,4 +82,4 @@ const mapStateToProps = ({ filters: { showFilters }}) => {
   return { showFilters };
 };
 
-export default connect(mapStateToProps, { toggleFilters, getClientDataSource })(AllFilters);
+export default connect(mapStateToProps, { toggleFilters, resetFilters, getClientDataSource })(AllFilters);
