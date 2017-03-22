@@ -7,7 +7,7 @@ import FaIcon from '../FaIcon';
 class AdvancedButton extends Component {
   render() {
     const { showFilters, toggleFilters } = this.props;
-    const isMobile = window.innerWidth <= 668;
+    const isMobile = window.innerWidth <= 736;
 
     return (
       <CoreButton

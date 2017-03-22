@@ -1,15 +1,17 @@
+const widthAvg = window.innerWidth / 8;
+
 const INITIAL_STATE = {
   columns: {
-    crn: { width: 100 },
-    externalId: { width: 120 },
-    name: { width: 200 },
-    address: { width: 250 },
-    homePhone: { width: 175 },
-    mobile: { width: 175 },
-    email: { width: 180 },
-    medicareCardNumber: { width: 200 },
-    siteId: { width: 180 },
-    groupId: { width: 180 }
+    crn: { width: widthAvg },
+    externalId: { width: widthAvg },
+    name: { width: widthAvg },
+    address: { width: widthAvg },
+    homePhone: { width: widthAvg },
+    mobile: { width: widthAvg },
+    email: { width: widthAvg },
+    medicareCardNumber: { width: widthAvg },
+    siteId: { width: widthAvg },
+    groupId: { width: widthAvg }
   }
 };
 

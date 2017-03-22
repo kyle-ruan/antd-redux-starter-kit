@@ -4,6 +4,7 @@ import { Checkbox } from 'antd';
 import { toggleColumns } from '../../../actions';
 
 const CheckboxGroup = Checkbox.Group;
+const isMobile = window.innerWidth <= 736;
 
 class VisibleColumnsContent extends Component {
   constructor(props) {
@@ -36,20 +37,22 @@ class VisibleColumnsContent extends Component {
       };
     });
 
+    const defaultValues = isMobile ? ['name', 'mobile'] : [
+      'name',
+      'streetAddress',
+      'homePhone',
+      'mobile',
+      'email',
+      'medicareCardNumber',
+      'groupId',
+      'siteId'
+    ];
+
     return (
       <div style={{ width: 250 }}>
         <CheckboxGroup
           options={this.options.concat(cfOptions)}
-          defaultValue={[
-            'name',
-            'streetAddress',
-            'homePhone',
-            'mobile',
-            'email',
-            'medicareCardNumber',
-            'groupId',
-            'siteId'
-          ]}
+          defaultValue={defaultValues}
           onChange={this.handleChange.bind(this)}
         />
       </div>

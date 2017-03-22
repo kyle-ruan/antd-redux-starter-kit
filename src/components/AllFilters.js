@@ -14,7 +14,7 @@ import {
 
 class AllFilters extends Component {
   renderFilters() {
-    const isMobile = window.innerWidth <= 668;
+    const isMobile = window.innerWidth <= 736;
     const { showFilters, toggleFilters, getClientDataSource, resetFilters } = this.props;
     if (!isMobile) {
       return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Popover, Button } from 'antd';
 import VisibleColumnsContent from './Popovers/VisibleColumnsContent';
 
-const isMobile = window.innerWidth <= 668;
+const isMobile = window.innerWidth <= 736;
 
 class ToggleColumnButton extends Component {
   constructor(props) {

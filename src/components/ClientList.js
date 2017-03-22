@@ -7,7 +7,7 @@ import { getClientGroups, getSites } from '../actions';
 import GoToClient from './Filters/GoToClient';
 import AllFilters from './AllFilters';
 
-const isMobile = window.innerWidth <= 668;
+const isMobile = window.innerWidth <= 736;
 
 class ClientList extends Component {
   componentDidMount() {
