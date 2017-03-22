@@ -6,10 +6,10 @@ const INITIAL_STATE = {
     address: { width: 250 },
     homePhone: { width: 150 },
     mobile: { width: 150 },
-    email: { width: 200 },
-    medicareCardNumber: { width: 250 },
-    siteId: { width: 200 },
-    groupId: { width: 200 }
+    email: { width: 180 },
+    medicareCardNumber: { width: 200 },
+    siteId: { width: 180 },
+    groupId: { width: 180 }
   }
 };
 
