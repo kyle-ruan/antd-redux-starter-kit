@@ -173,14 +173,13 @@ class ClientGrid extends Component {
         });
       }
 
-      columns.push({
-        title: 'Actions',
-        dataIndex: '',
-        key: 'x',
-        width: 100,
-        fixed: 'right',
-        render: () => <a href="#">View Details</a>
-      });
+      // columns.push({
+      //   title: 'Actions',
+      //   dataIndex: '',
+      //   key: 'x',
+      //   fixed: 'right',
+      //   render: () => <a href="#">View Details</a>
+      // });
 
       return columns;
     }
@@ -222,7 +221,7 @@ class ClientGrid extends Component {
     } = this.props;
     const pagination = { current, total, pageSize };
     const windowWidth = window.innerWidth;
-    const scroll = visibleColumns.length > 8 ? { x: windowWidth + 300 } : { x: null };
+    const scroll = visibleColumns.length > 8 ? { x: windowWidth + (visibleColumns.length - 8) * 150  } : { x: null };
     const columns= this.setColumns();
     return (
       <Table
@@ -236,7 +235,7 @@ class ClientGrid extends Component {
         scroll={scroll}
         title={() => { return this.renderGridTitle() }}
         onChange={this.handleTableChange.bind(this)}
-        onRowClick={(record) => { console.log(record.id);}}
+        onRowClick={(record) => { window.parent.selectClient(record.id) }}
       />
     );
   }

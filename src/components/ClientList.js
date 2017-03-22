@@ -16,8 +16,8 @@ class ClientList extends Component {
   render() {
     return (
       <div className='client-list'>
-
         <BackTop />
+
         <Row>
           <Col span={24}>
             <Affix>

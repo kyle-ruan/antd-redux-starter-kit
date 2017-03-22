@@ -34,15 +34,6 @@ class GeneralFiltersDesktop extends Component {
         <Row gutter={20}>
           <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
-              <SiteMultiSelect
-                value={sites}
-                showFilters={showFilters}
-                onChange={this.onFilterChange.bind(this)}
-              />
-            </div>
-          </Col>
-          <Col md={{span: 6}} sm={{span: 12 }}>
-            <div className="filter-block">
               <ClientNameSearch
                 value={name}
                 onChange={this.onFilterChange.bind(this)}
@@ -60,8 +51,8 @@ class GeneralFiltersDesktop extends Component {
           </Col>
           <Col md={{span: 6}} sm={{span: 12 }}>
             <div className="filter-block">
-              <ClientGroupMultiSelect
-                value={clientGroups}
+              <SiteMultiSelect
+                value={sites}
                 showFilters={showFilters}
                 onChange={this.onFilterChange.bind(this)}
               />
@@ -82,6 +73,16 @@ class GeneralFiltersDesktop extends Component {
               <OtherDetailsSearch
                 value={others}
                 searchFields={othersSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
+          </Col>
+
+          <Col md={{span: 6}} sm={{span: 12 }}>
+            <div className="filter-block">
+              <ClientGroupMultiSelect
+                value={clientGroups}
+                showFilters={showFilters}
                 onChange={this.onFilterChange.bind(this)}
               />
             </div>

@@ -3,13 +3,13 @@ const INITIAL_STATE = {
     crn: { width: 100 },
     externalId: { width: 120 },
     name: { width: 200 },
-    address: { width: 200 },
-    homePhone: { width: 120 },
-    mobile: { width: 120 },
-    email: { width: 150 },
-    medicareCardNumber: { width: 175 },
-    siteId: { width: 150 },
-    groupId: { width: 150 }
+    address: { width: 250 },
+    homePhone: { width: 150 },
+    mobile: { width: 150 },
+    email: { width: 200 },
+    medicareCardNumber: { width: 250 },
+    siteId: { width: 200 },
+    groupId: { width: 200 }
   }
 };
 
