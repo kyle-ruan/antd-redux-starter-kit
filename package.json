@@ -1,7 +1,7 @@
 {
   "name": "client-list",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "./coreplusClientList",
   "private": true,
   "dependencies": {
     "antd": "^2.8.1",
