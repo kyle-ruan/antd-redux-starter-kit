@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table, Row, Col } from 'antd';
-
+import { Modal, Table, Row, Col } from 'antd';
+import axios from 'axios';
 import ResizeHeader from './Grid/ResizeHeader';
 import {
   StatusButtonGroup
 } from './Buttons';
 import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
+import { apiConfig } from '../configs';
+const { coreplusWebClientURL, headers } = apiConfig;
+const { confirm } = Modal;
 
 class ClientGrid extends Component {
   constructor(props) {
@@ -24,6 +27,39 @@ class ClientGrid extends Component {
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleEnter.bind(this))
+  }
+
+  confirmActivate(id) {
+    const self = this;
+    confirm({
+      title: 'Confirm',
+      content: 'Are you sure with to re-open this clients file?',
+      onOk() {
+        const requestUrul = `${coreplusWebClientURL}api/Client/ActivateClient?id=${id}`;
+        axios.get(requestUrul, { headers })
+          .then(() => {
+            self.confirmGoToClient(id);
+          });
+      }
+    });
+  }
+
+  confirmGoToClient(id) {
+    confirm({
+      title: 'Confirm',
+      content: 'Would you like to go to this client file?',
+      onOk() {
+        window.parent.selectClient(id);
+      }
+    });
+  }
+
+  onClientSelect(client) {
+    if (client.status === 'CURRENT') {
+      window.parent.selectClient(client.id);
+    } else {
+      this.confirmActivate(client.id);
+    }
   }
 
   handleTableChange(pagination, filters, sorter) {
@@ -237,7 +273,7 @@ class ClientGrid extends Component {
         scroll={{ x: scrollX }}
         title={() => { return this.renderGridTitle() }}
         onChange={this.handleTableChange.bind(this)}
-        onRowClick={(record) => { window.parent.selectClient(record.id) }}
+        onRowClick={this.onClientSelect.bind(this)}
       />
     );
   }
