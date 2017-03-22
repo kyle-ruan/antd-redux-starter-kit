@@ -1,4 +1,7 @@
-const widthAvg = window.innerWidth / 8;
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
+const widthAvg = isMobile ? window.innerWidth / 2 : window.innerWidth / 8;
 
 const INITIAL_STATE = {
   columns: {

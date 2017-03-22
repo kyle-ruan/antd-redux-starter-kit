@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Checkbox } from 'antd';
 import { toggleColumns } from '../../../actions';
+import { deviceConfig } from '../../../configs';
 
 const CheckboxGroup = Checkbox.Group;
-const isMobile = window.innerWidth <= 736;
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class VisibleColumnsContent extends Component {
   constructor(props) {

@@ -1,5 +1,8 @@
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
+
 let INITIAL_STATE = {};
-const isMobile = window.innerWidth <= 668;
 if (isMobile) {
   INITIAL_STATE = {
     crn: false,

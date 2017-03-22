@@ -7,10 +7,11 @@ import {
   StatusButtonGroup
 } from './Buttons';
 import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
-import { apiConfig } from '../configs';
+import { apiConfig, deviceConfig } from '../configs';
+
 const { coreplusWebClientURL, headers } = apiConfig;
 const { confirm } = Modal;
-const isMobile = window.innerWidth <= 736;
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class ClientGrid extends Component {
   constructor(props) {

@@ -28,3 +28,7 @@ export { apiConfig };
 export const reportConfig = {
   pageSize: 30
 };
+
+export const deviceConfig = {
+  mobileWidth: 736
+};

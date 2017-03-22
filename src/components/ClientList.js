@@ -6,8 +6,9 @@ import { ToggleColumnButton, AdvancedOptionsButton } from './Buttons';
 import { getClientGroups, getSites } from '../actions';
 import GoToClient from './Filters/GoToClient';
 import AllFilters from './AllFilters';
+import { deviceConfig } from '../configs';
 
-const isMobile = window.innerWidth <= 736;
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class ClientList extends Component {
   componentDidMount() {

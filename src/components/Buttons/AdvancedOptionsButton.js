@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { toggleFilters } from '../../actions';
 import CoreButton from '../CoreButton';
 import FaIcon from '../FaIcon';
+import { deviceConfig } from '../../configs';
 
 class AdvancedButton extends Component {
   render() {
     const { showFilters, toggleFilters } = this.props;
-    const isMobile = window.innerWidth <= 736;
+    const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
     return (
       <CoreButton
