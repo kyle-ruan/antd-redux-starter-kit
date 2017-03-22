@@ -221,8 +221,10 @@ class ClientGrid extends Component {
     } = this.props;
     const pagination = { current, total, pageSize };
     const windowWidth = window.innerWidth;
-    const scroll = visibleColumns.length > 8 ? { x: windowWidth + (visibleColumns.length - 8) * 150  } : { x: null };
     const columns= this.setColumns();
+    const isMobile = window.innerWidth <= 668;
+    const scrollX = visibleColumns.length > 8 ? windowWidth + (visibleColumns.length - 8) * 150  : null;
+    const scrollY = isMobile ? null : 1000 ;
     return (
       <Table
         columns={columns}
@@ -232,7 +234,7 @@ class ClientGrid extends Component {
         loading={clientsLoading}
         size='middle'
         bordered
-        scroll={scroll}
+        scroll={{ x: scrollX }}
         title={() => { return this.renderGridTitle() }}
         onChange={this.handleTableChange.bind(this)}
         onRowClick={(record) => { window.parent.selectClient(record.id) }}
