@@ -58,7 +58,7 @@ export default class GoToClient extends Component {
 
   onSelect(value) {
     this.setState({ value: '' })
-    console.log(value);
+    window.parent.selectClient(value);
   }
 
   renderOptions() {

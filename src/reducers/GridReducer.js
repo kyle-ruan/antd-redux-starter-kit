@@ -8,8 +8,8 @@ const INITIAL_STATE = {
     mobile: { width: 150 },
     email: { width: 200 },
     medicareCardNumber: { width: 250 },
-    siteId: { width: 150 },
-    groupId: { width: 150 }
+    siteId: { width: 200 },
+    groupId: { width: 200 }
   }
 };
 

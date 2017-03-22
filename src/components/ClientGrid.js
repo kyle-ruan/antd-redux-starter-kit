@@ -235,7 +235,7 @@ class ClientGrid extends Component {
         scroll={scroll}
         title={() => { return this.renderGridTitle() }}
         onChange={this.handleTableChange.bind(this)}
-        onRowClick={(record) => { console.log(record.id);}}
+        onRowClick={(record) => { window.parent.selectClient(record.id) }}
       />
     );
   }
