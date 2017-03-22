@@ -10,6 +10,7 @@ import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
 import { apiConfig } from '../configs';
 const { coreplusWebClientURL, headers } = apiConfig;
 const { confirm } = Modal;
+const isMobile = window.innerWidth <= 668;
 
 class ClientGrid extends Component {
   constructor(props) {
@@ -240,10 +241,16 @@ class ClientGrid extends Component {
       <div>
         <div className="ant-table-toolbar-tabs">
           <Row>
-            <Col className="ant-table-toolbar-tabs__left" span={14}>
+            <Col
+              className={isMobile ? null : "ant-table-toolbar-tabs__left" }
+              span={isMobile ? 24: 14}
+            >
               <StatusButtonGroup />
             </Col>
-            <Col className="ant-table-toolbar-tabs__right" span={10}>
+            <Col
+              className={ isMobile ? null : "ant-table-toolbar-tabs__right" }
+              span={isMobile? 24: 10}
+            >
               {this.renderPagingInfo()}
             </Col>
           </Row>
@@ -264,9 +271,9 @@ class ClientGrid extends Component {
     const pagination = { current, total, pageSize };
     const windowWidth = window.innerWidth;
     const columns= this.setColumns();
-    const isMobile = window.innerWidth <= 668;
+    //const isMobile = window.innerWidth <= 668;
     const scrollX = visibleColumns.length > 8 ? windowWidth + (visibleColumns.length - 8) * 150  : null;
-    const scrollY = isMobile ? null : 1000 ;
+    //const scrollY = isMobile ? null : 1000 ;
     return (
       <Table
         columns={columns}

@@ -32,16 +32,6 @@ class GeneralFiltersMobile extends Component {
         <Row>
           <Col span={24}>
             <div className="filter-block">
-              <SiteMultiSelect
-                value={sites}
-                onChange={this.onFilterChange.bind(this)}
-              />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <div className="filter-block">
               <ClientNameSearch
                 value={name}
                 onChange={this.onFilterChange.bind(this)}
@@ -49,6 +39,18 @@ class GeneralFiltersMobile extends Component {
             </div>
           </Col>
         </Row>
+
+        <Row>
+          <Col span={24}>
+            <div className="filter-block">
+              <MedicareSearch
+                value={medicare}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
+          </Col>
+        </Row>
+
         <Row>
           <Col span={24}>
             <div className="filter-block">
@@ -60,32 +62,35 @@ class GeneralFiltersMobile extends Component {
             </div>
           </Col>
         </Row>
-        <Row>
-          <Col span={24}>
-            <div className="filter-block">
-              <ClientGroupMultiSelect
-                value={clientGroups}
-                onChange={this.onFilterChange.bind(this)}
-              />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <div className="filter-block">
-              <MedicareSearch
-                value={medicare}
-                onChange={this.onFilterChange.bind(this)}
-              />
-            </div>
-          </Col>
-        </Row>
+        
         <Row>
           <Col span={24}>
             <div className="filter-block">
               <OtherDetailsSearch
                 value={others}
                 searchFields={othersSearchFields}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24}>
+            <div className="filter-block">
+              <SiteMultiSelect
+                value={sites}
+                onChange={this.onFilterChange.bind(this)}
+              />
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24}>
+            <div className="filter-block">
+              <ClientGroupMultiSelect
+                value={clientGroups}
                 onChange={this.onFilterChange.bind(this)}
               />
             </div>

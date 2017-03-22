@@ -8,17 +8,21 @@
 // };
 
 // dev2 config
-// export const apiConfig = {
-//   coreplusWebClientURL: "https://dev2.coreplus.com.au/",
-//   headers: {
-//     "X-SessionId": "20E47C21-00D1-4360-96FD-56C8223147AC",
-//     "content-type": "application/json"
-//   }
-// };
+let apiConfig;
+if (process.env.NODE_ENV !== 'production') {
+  apiConfig = {
+    coreplusWebClientURL: "https://dev2.coreplus.com.au/",
+    headers: {
+      "X-SessionId": "20E47C21-00D1-4360-96FD-56C8223147AC",
+      "content-type": "application/json"
+    }
+  };
+} else {
+  // qa/prod config
+  apiConfig = top.webClientApiConfig();
+  apiConfig.headers['content-type'] = 'application/json';
+}
 
-// qa/prod config
-const apiConfig = top.webClientApiConfig();
-apiConfig.headers['content-type'] = 'application/json';
 export { apiConfig };
 
 export const reportConfig = {

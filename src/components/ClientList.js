@@ -7,6 +7,8 @@ import { getClientGroups, getSites } from '../actions';
 import GoToClient from './Filters/GoToClient';
 import AllFilters from './AllFilters';
 
+const isMobile = window.innerWidth <= 668;
+
 class ClientList extends Component {
   componentDidMount() {
     this.props.getClientGroups();
@@ -28,7 +30,7 @@ class ClientList extends Component {
                 <div className="button-bar__item">
                   <GoToClient />
                 </div>
-                <div className="button-bar__item">
+                <div className={ isMobile ? null : "button-bar__item" }>
                   <AdvancedOptionsButton />
                 </div>
               </div>
