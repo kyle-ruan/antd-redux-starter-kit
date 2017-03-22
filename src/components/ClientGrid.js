@@ -40,6 +40,9 @@ class ClientGrid extends Component {
           .then(() => {
             self.confirmGoToClient(id);
           });
+      },
+      onCancel() {
+
       }
     });
   }
@@ -50,6 +53,9 @@ class ClientGrid extends Component {
       content: 'Would you like to go to this client file?',
       onOk() {
         window.parent.selectClient(id);
+      },
+      onCancel() {
+
       }
     });
   }
