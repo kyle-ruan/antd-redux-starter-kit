@@ -45,6 +45,15 @@ export default (state = INITIAL_STATE, action) => {
         columns: { ...state.columns, [column]: resizedColumn }
       };
 
+    case 'TOGGLE_COLUMN_VISIBILITY':
+      const widthAvg = window.innerWidth / (action.payload.columns.length);
+      const newState_2 = { ...state };
+      let currentColumns_2 = newState_2.columns;
+      Object.keys(currentColumns_2).forEach(column => {
+        currentColumns_2 = { ...currentColumns_2, [column]: { width: widthAvg } };
+      });
+      return { ...state, columns: currentColumns_2 };
+      
     default:
       return state;
   }

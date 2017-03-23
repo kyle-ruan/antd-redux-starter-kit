@@ -16,6 +16,7 @@ export default class GoToClient extends Component {
   }
 
   handleChange(value) {
+    const trimedValue = value.trim();
     if (value.length < 2)
       return;
 
@@ -23,7 +24,7 @@ export default class GoToClient extends Component {
     const { coreplusWebClientURL, headers } = apiConfig;
     const requestUrl = `${coreplusWebClientURL}api/Client/GetClientListDataSource`;
 
-    axios.post(requestUrl, JSON.stringify({ Keyword: value }), { headers })
+    axios.post(requestUrl, JSON.stringify({ Keyword: trimedValue }), { headers })
       .then(({data}) => {
         this.setState({ loading: false });
         const clients = data.Data;
