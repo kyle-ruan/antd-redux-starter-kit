@@ -3,3 +3,4 @@ export * from './ToggleColumnButton';
 export * from './ResetButton';
 export * from './AdvancedOptionsButton';
 export * from './StatusButtonGroup';
+export * from './NewClientButton';
