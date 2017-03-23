@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Select } from 'antd';
 import axios from 'axios';
 import _ from 'lodash';
+import { confirmActivate } from '../PopUp/ConfirmActivate';
 import { apiConfig } from '../../configs';
 
 const { Option, OptGroup } = Select;
@@ -10,6 +11,7 @@ export default class GoToClient extends Component {
     super(props);
     this.state = {
       dataSource: [],
+      inActiveClientIds: [],
       value: '',
       loading: false
     };
@@ -31,7 +33,10 @@ export default class GoToClient extends Component {
         const currentClients = clients.filter(client => client.status === 'CURRENT');
         const closedClients = clients.filter(client => client.status === 'CLOSED');
         const deceasedClients = clients.filter(client => client.status === 'DECEASED');
-
+        this.setState({ inActiveClientIds: [
+          ...closedClients.map(client => client.id),
+          ...deceasedClients.map(client => client.id)
+        ]});
         const dataSource = [
           {
             title: 'CURRENT',
@@ -61,8 +66,13 @@ export default class GoToClient extends Component {
   }
 
   onSelect(value) {
-    this.setState({ value: '' })
-    window.parent.selectClient(value);
+    this.setState({ value: '' });
+    const isInactive = this.state.inActiveClientIds.includes(parseInt(value, 10));
+    if (isInactive) {
+      confirmActivate(value);
+    } else {
+      window.parent.selectClient(value);
+    }
   }
 
   renderOptions() {

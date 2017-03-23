@@ -1,13 +1,13 @@
 import React from 'react';
 import CoreButton from '../CoreButton';
 
-const NewClientButton = ({ loading, onClick }) => {
+const NewClientButton = () => {
   return (
     <CoreButton
       type='primary'
       icon="plus"
-      loading={loading}
-      onClick={onClick}
+      size="small"
+      onClick={() => { window.parent.selectClient('0') }}
     >
       New Client
     </CoreButton>

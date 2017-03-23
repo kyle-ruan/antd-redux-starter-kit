@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal, Table, Row, Col } from 'antd';
-import axios from 'axios';
+import { Table, Row, Col } from 'antd';
 import ResizeHeader from './Grid/ResizeHeader';
-import {
-  StatusButtonGroup
-} from './Buttons';
+import { confirmActivate } from './PopUp/ConfirmActivate';
+import { StatusButtonGroup } from './Buttons';
 import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
-import { apiConfig, deviceConfig } from '../configs';
+import { deviceConfig } from '../configs';
 
-const { coreplusWebClientURL, headers } = apiConfig;
-const { confirm } = Modal;
 const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class ClientGrid extends Component {
@@ -31,42 +27,11 @@ class ClientGrid extends Component {
     document.removeEventListener('keydown', this.handleEnter.bind(this))
   }
 
-  confirmActivate(id) {
-    const self = this;
-    confirm({
-      title: 'Confirm',
-      content: 'Are you sure with to re-open this clients file?',
-      onOk() {
-        const requestUrul = `${coreplusWebClientURL}api/Client/ActivateClient?id=${id}`;
-        axios.get(requestUrul, { headers })
-          .then(() => {
-            self.confirmGoToClient(id);
-          });
-      },
-      onCancel() {
-
-      }
-    });
-  }
-
-  confirmGoToClient(id) {
-    confirm({
-      title: 'Confirm',
-      content: 'Would you like to go to this client file?',
-      onOk() {
-        window.parent.selectClient(id);
-      },
-      onCancel() {
-
-      }
-    });
-  }
-
   onClientSelect(client) {
     if (client.status === 'CURRENT') {
       window.parent.selectClient(client.id);
     } else {
-      this.confirmActivate(client.id);
+      confirmActivate(client.id);
     }
   }
 
@@ -224,7 +189,6 @@ class ClientGrid extends Component {
 
       return columns;
     }
-
 
   renderPagingInfo() {
     const { total, current, pageSize } = this.props;
