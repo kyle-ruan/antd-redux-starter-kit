@@ -97,7 +97,6 @@ export default class GoToClient extends Component {
     return (
       <Select
         combobox
-        value={this.state.value}
         placeholder="Go to client"
         style={{ width: 200 }}
         filterOption={false}
