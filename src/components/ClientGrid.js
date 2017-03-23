@@ -135,7 +135,7 @@ class ClientGrid extends Component {
           key: 'streetAddress',
           sorter: true,
           width: grid.columns['address'].width,
-          render: streetAddress => `${streetAddress.address || ''}`
+          render: streetAddress => `${streetAddress.address || ''} ${streetAddress.suburb || ''} ${streetAddress.state || ''}`
         });
 
       if(visibleColumns.includes('homePhone'))
