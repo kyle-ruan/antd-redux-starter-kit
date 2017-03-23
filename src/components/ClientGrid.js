@@ -103,9 +103,8 @@ class ClientGrid extends Component {
           title: <ResizeHeader column='crn' title='CRN' />,
           dataIndex: 'crn',
           key: 'crn',
-          width: 150,
-          sorter: true,
-          fixed: 'left'
+          width: grid.columns['crn'].width,
+          sorter: true
         });
 
         if(visibleColumns.includes('externalId'))
@@ -113,9 +112,8 @@ class ClientGrid extends Component {
             title: <ResizeHeader column='externalId' title='External ID' />,
             dataIndex: 'externalId',
             key: 'externalId',
-            width: 150,
-            sorter: true,
-            fixed: 'left'
+            width: grid.columns['externalId'].width,
+            sorter: true
           });
 
       if(visibleColumns.includes('name'))
@@ -124,8 +122,7 @@ class ClientGrid extends Component {
           dataIndex: 'name',
           key: 'name',
           width: grid.columns['name'].width,
-          sorter: true,
-          fixed: 'left'
+          sorter: true
         });
 
       if(visibleColumns.includes('streetAddress'))
