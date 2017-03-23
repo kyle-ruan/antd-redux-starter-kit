@@ -4,7 +4,7 @@ import { Input } from 'antd';
 const StringField = ({ id, label, value, onChange }) => {
   return (
     <div>
-      <label>{label}: </label>
+      <label>{label}</label>
       <Input
         style={{ width: 200 }}
         value={value}

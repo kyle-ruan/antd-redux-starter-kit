@@ -23,7 +23,7 @@ class Sites extends Component {
     const { value, loading, onChange, getSites } = this.props;
     return (
       <div>
-        <label>Sites: </label>
+        <label>Sites</label>
         <InputGroup compact>
           <Select
             style={{ width: 200 }}

@@ -4,7 +4,7 @@ import { Input } from 'antd';
 const ClientNameSearch = ({value, onChange}) => {
   return (
     <div>
-      <label>Client Name: </label>
+      <label>Client Name</label>
       <Input
         style={{ width: 200 }}
         placeholder="Filter by Client Name"

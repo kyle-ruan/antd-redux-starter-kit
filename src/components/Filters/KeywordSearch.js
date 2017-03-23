@@ -5,7 +5,7 @@ const { Search } = Input;
 const KeywordSearch = ({value, onChange}) => {
   return (
     <div>
-      <label>Keyword: </label>
+      <label>Keyword</label>
       <Search
         style={{ width: 200 }}
         placeholder="input keyword to search"

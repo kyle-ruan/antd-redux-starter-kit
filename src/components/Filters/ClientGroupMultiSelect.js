@@ -24,7 +24,7 @@ class ClientGroups extends Component {
     const { value, loading, onChange, getClientGroups } = this.props;
     return (
       <div>
-        <label>Client Groups: </label>
+        <label>Client Groups</label>
         <InputGroup compact>
           <Select
             style={{ width: 200 }}

@@ -6,7 +6,7 @@ import OtherDetailsButton from '../Buttons/OtherDetailsButton';
 const OtherDetailsSearch = ({value, searchFields, onChange}) => {
   return (
     <div>
-      <label>Other Details: </label>
+      <label>Other Details</label>
       <InputGroup compact>
         <Input
           style={{ width: 200 }}
