@@ -189,7 +189,7 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('groupId'))
         columns.push({
-          title: <ResizeHeader column='groupId' title='Group' />,
+          title: <ResizeHeader column='groupId' title='Client Group' />,
           dataIndex: 'groupId',
           key: 'groupId',
           width: grid.columns['groupId'].width,

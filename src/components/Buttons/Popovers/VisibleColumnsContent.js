@@ -19,7 +19,7 @@ class VisibleColumnsContent extends Component {
       { label: 'Mobile', value: 'mobile' },
       { label: 'Email', value: 'email' },
       { label: 'Meidcare Card Number', value: 'medicareCardNumber' },
-      { label: 'Group', value: 'groupId' },
+      { label: 'Client Group', value: 'groupId' },
       { label: 'Site', value: 'siteId' }
     ];
   }

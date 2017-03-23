@@ -16,6 +16,9 @@ export default class GoToClient extends Component {
   }
 
   handleChange(value) {
+    if (value.length < 2)
+      return;
+
     this.setState({ loading: true, value });
     const { coreplusWebClientURL, headers } = apiConfig;
     const requestUrl = `${coreplusWebClientURL}api/Client/GetClientListDataSource`;
