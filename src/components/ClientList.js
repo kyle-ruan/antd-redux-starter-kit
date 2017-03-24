@@ -6,6 +6,9 @@ import { ToggleColumnButton, AdvancedOptionsButton } from './Buttons';
 import { getClientGroups, getSites } from '../actions';
 import GoToClient from './Filters/GoToClient';
 import AllFilters from './AllFilters';
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class ClientList extends Component {
   componentDidMount() {
@@ -28,7 +31,7 @@ class ClientList extends Component {
                 <div className="button-bar__item">
                   <GoToClient />
                 </div>
-                <div className="button-bar__item">
+                <div className={ isMobile ? null : "button-bar__item" }>
                   <AdvancedOptionsButton />
                 </div>
               </div>

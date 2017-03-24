@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'antd';
-
 import ResizeHeader from './Grid/ResizeHeader';
-import {
-  StatusButtonGroup
-} from './Buttons';
+import { confirmActivate } from './PopUp/ConfirmActivate';
+import { StatusButtonGroup } from './Buttons';
 import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class ClientGrid extends Component {
   constructor(props) {
@@ -24,6 +25,14 @@ class ClientGrid extends Component {
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleEnter.bind(this))
+  }
+
+  onClientSelect(client) {
+    if (client.status === 'CURRENT') {
+      window.parent.selectClient(client.id);
+    } else {
+      confirmActivate(client.id);
+    }
   }
 
   handleTableChange(pagination, filters, sorter) {
@@ -59,9 +68,8 @@ class ClientGrid extends Component {
           title: <ResizeHeader column='crn' title='CRN' />,
           dataIndex: 'crn',
           key: 'crn',
-          width: 150,
-          sorter: true,
-          fixed: 'left'
+          width: grid.columns['crn'].width,
+          sorter: true
         });
 
         if(visibleColumns.includes('externalId'))
@@ -69,9 +77,8 @@ class ClientGrid extends Component {
             title: <ResizeHeader column='externalId' title='External ID' />,
             dataIndex: 'externalId',
             key: 'externalId',
-            width: 150,
-            sorter: true,
-            fixed: 'left'
+            width: grid.columns['externalId'].width,
+            sorter: true
           });
 
       if(visibleColumns.includes('name'))
@@ -80,8 +87,7 @@ class ClientGrid extends Component {
           dataIndex: 'name',
           key: 'name',
           width: grid.columns['name'].width,
-          sorter: true,
-          fixed: 'left'
+          sorter: true
         });
 
       if(visibleColumns.includes('streetAddress'))
@@ -91,7 +97,7 @@ class ClientGrid extends Component {
           key: 'streetAddress',
           sorter: true,
           width: grid.columns['address'].width,
-          render: streetAddress => `${streetAddress.address || ''}`
+          render: streetAddress => `${streetAddress.address || ''} ${streetAddress.suburb || ''} ${streetAddress.state || ''}`
         });
 
       if(visibleColumns.includes('homePhone'))
@@ -145,7 +151,7 @@ class ClientGrid extends Component {
 
       if(visibleColumns.includes('groupId'))
         columns.push({
-          title: <ResizeHeader column='groupId' title='Group' />,
+          title: <ResizeHeader column='groupId' title='Client Group' />,
           dataIndex: 'groupId',
           key: 'groupId',
           width: grid.columns['groupId'].width,
@@ -184,7 +190,6 @@ class ClientGrid extends Component {
       return columns;
     }
 
-
   renderPagingInfo() {
     const { total, current, pageSize } = this.props;
     const from = (current - 1) * pageSize + 1;
@@ -198,10 +203,16 @@ class ClientGrid extends Component {
       <div>
         <div className="ant-table-toolbar-tabs">
           <Row>
-            <Col className="ant-table-toolbar-tabs__left" span={14}>
+            <Col
+              className={isMobile ? null : "ant-table-toolbar-tabs__left" }
+              span={isMobile ? 24: 14}
+            >
               <StatusButtonGroup />
             </Col>
-            <Col className="ant-table-toolbar-tabs__right" span={10}>
+            <Col
+              className={ isMobile ? null : "ant-table-toolbar-tabs__right" }
+              span={isMobile? 24: 10}
+            >
               {this.renderPagingInfo()}
             </Col>
           </Row>
@@ -222,9 +233,9 @@ class ClientGrid extends Component {
     const pagination = { current, total, pageSize };
     const windowWidth = window.innerWidth;
     const columns= this.setColumns();
-    const isMobile = window.innerWidth <= 668;
+    //const isMobile = window.innerWidth <= 668;
     const scrollX = visibleColumns.length > 8 ? windowWidth + (visibleColumns.length - 8) * 150  : null;
-    const scrollY = isMobile ? null : 1000 ;
+    //const scrollY = isMobile ? null : 1000 ;
     return (
       <Table
         columns={columns}
@@ -237,7 +248,7 @@ class ClientGrid extends Component {
         scroll={{ x: scrollX }}
         title={() => { return this.renderGridTitle() }}
         onChange={this.handleTableChange.bind(this)}
-        onRowClick={(record) => { window.parent.selectClient(record.id) }}
+        onRowClick={this.onClientSelect.bind(this)}
       />
     );
   }

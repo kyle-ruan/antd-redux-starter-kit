@@ -1,15 +1,20 @@
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
+const widthAvg = isMobile ? window.innerWidth / 2 : window.innerWidth / 8;
+
 const INITIAL_STATE = {
   columns: {
-    crn: { width: 100 },
-    externalId: { width: 120 },
-    name: { width: 200 },
-    address: { width: 250 },
-    homePhone: { width: 150 },
-    mobile: { width: 150 },
-    email: { width: 180 },
-    medicareCardNumber: { width: 200 },
-    siteId: { width: 180 },
-    groupId: { width: 180 }
+    crn: { width: widthAvg },
+    externalId: { width: widthAvg },
+    name: { width: widthAvg },
+    address: { width: widthAvg },
+    homePhone: { width: widthAvg },
+    mobile: { width: widthAvg },
+    email: { width: widthAvg },
+    medicareCardNumber: { width: widthAvg },
+    siteId: { width: widthAvg },
+    groupId: { width: widthAvg }
   }
 };
 
@@ -40,6 +45,15 @@ export default (state = INITIAL_STATE, action) => {
         columns: { ...state.columns, [column]: resizedColumn }
       };
 
+    case 'TOGGLE_COLUMN_VISIBILITY':
+      const widthAvg = window.innerWidth / (action.payload.columns.length);
+      const newState_2 = { ...state };
+      let currentColumns_2 = newState_2.columns;
+      Object.keys(currentColumns_2).forEach(column => {
+        currentColumns_2 = { ...currentColumns_2, [column]: { width: widthAvg } };
+      });
+      return { ...state, columns: currentColumns_2 };
+      
     default:
       return state;
   }

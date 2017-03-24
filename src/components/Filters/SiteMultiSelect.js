@@ -22,7 +22,7 @@ class Sites extends Component {
     const { value, loading, onChange, getSites } = this.props;
     return (
       <div>
-        <label>Sites: </label>
+        <label>Sites</label>
         <div className="input-button-group input-button-group--right">
           <Select
             style={{ width: '100%' }}

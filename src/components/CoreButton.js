@@ -6,6 +6,7 @@ const CoreButton = (props) => {
   return (
     <Button
       type={props.type}
+      style={props.style}
       size={props.size}
       className={props.className}
       onClick={props.onClick}

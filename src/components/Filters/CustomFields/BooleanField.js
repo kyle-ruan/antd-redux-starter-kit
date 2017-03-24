@@ -5,7 +5,7 @@ const { Option } = Select;
 const BooleanField = ({ id, label, value, onChange }) => {
   return (
     <div>
-      <label>{label}: </label>
+      <label>{label}</label>
       <Select
         style={{ width: '100%' }}
         value={value}

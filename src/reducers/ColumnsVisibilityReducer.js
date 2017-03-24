@@ -1,15 +1,35 @@
-const INITIAL_STATE = {
-  crn: false,
-  externalId: false,
-  name: true,
-  streetAddress: true,
-  homePhone: true,
-  mobile: true,
-  email: true,
-  medicareCardNumber: true,
-  siteId: true,
-  groupId: true
-};
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
+
+let INITIAL_STATE = {};
+if (isMobile) {
+  INITIAL_STATE = {
+    crn: false,
+    externalId: false,
+    name: true,
+    streetAddress: false,
+    homePhone: false,
+    mobile: true,
+    email: false,
+    medicareCardNumber: false,
+    siteId: false,
+    groupId: false
+  };
+} else {
+  INITIAL_STATE = {
+    crn: false,
+    externalId: false,
+    name: true,
+    streetAddress: true,
+    homePhone: true,
+    mobile: true,
+    email: true,
+    medicareCardNumber: true,
+    siteId: true,
+    groupId: true
+  };
+}
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

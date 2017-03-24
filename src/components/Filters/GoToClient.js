@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Select } from 'antd';
 import axios from 'axios';
 import _ from 'lodash';
+import { confirmActivate } from '../PopUp/ConfirmActivate';
 import { apiConfig } from '../../configs';
 
 const { Option, OptGroup } = Select;
@@ -10,24 +11,32 @@ export default class GoToClient extends Component {
     super(props);
     this.state = {
       dataSource: [],
+      inActiveClientIds: [],
       value: '',
       loading: false
     };
   }
 
   handleChange(value) {
+    const trimedValue = value.trim();
+    if (value.length < 2)
+      return;
+
     this.setState({ loading: true, value });
     const { coreplusWebClientURL, headers } = apiConfig;
     const requestUrl = `${coreplusWebClientURL}api/Client/GetClientListDataSource`;
 
-    axios.post(requestUrl, JSON.stringify({ Keyword: value }), { headers })
+    axios.post(requestUrl, JSON.stringify({ Keyword: trimedValue }), { headers })
       .then(({data}) => {
         this.setState({ loading: false });
         const clients = data.Data;
         const currentClients = clients.filter(client => client.status === 'CURRENT');
         const closedClients = clients.filter(client => client.status === 'CLOSED');
         const deceasedClients = clients.filter(client => client.status === 'DECEASED');
-
+        this.setState({ inActiveClientIds: [
+          ...closedClients.map(client => client.id),
+          ...deceasedClients.map(client => client.id)
+        ]});
         const dataSource = [
           {
             title: 'CURRENT',
@@ -57,8 +66,13 @@ export default class GoToClient extends Component {
   }
 
   onSelect(value) {
-    this.setState({ value: '' })
-    window.parent.selectClient(value);
+    this.setState({ value: '' });
+    const isInactive = this.state.inActiveClientIds.includes(parseInt(value, 10));
+    if (isInactive) {
+      confirmActivate(value);
+    } else {
+      window.parent.selectClient(value);
+    }
   }
 
   renderOptions() {
@@ -83,7 +97,6 @@ export default class GoToClient extends Component {
     return (
       <Select
         combobox
-        value={this.state.value}
         placeholder="Go to client"
         style={{ width: 200 }}
         filterOption={false}

@@ -7,14 +7,13 @@ import GeneralFiltersMobile from './Filters/Mobile/GeneralFiltersMobile';
 import CustomFieldFiltersMobile from './Filters/Mobile/CustomFieldFiltersMobile';
 import { toggleFilters, getClientDataSource, resetFilters } from '../actions';
 import Collapse from 'react-collapse';
-import {
-  ReloadButton,
-  ResetButton
-} from './Buttons';
+import { ReloadButton, ResetButton } from './Buttons';
+import { deviceConfig } from '../configs';
+
+const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
 class AllFilters extends Component {
   renderFilters() {
-    const isMobile = window.innerWidth <= 668;
     const { showFilters, toggleFilters, getClientDataSource, resetFilters } = this.props;
     if (!isMobile) {
       return (

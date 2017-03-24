@@ -5,7 +5,7 @@ import ClientDetailsButton from '../Buttons/ClientDetailsButton';
 const ClientDetailsSearch = ({value, searchFields, onChange}) => {
   return (
     <div>
-      <label>Client Details: </label>
+      <label>Client Details</label>
 
       <div className="input-button-group input-button-group--right">
         <Input

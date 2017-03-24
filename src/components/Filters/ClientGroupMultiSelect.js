@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Select, Icon, Input, Tooltip, Button } from 'antd';
+import { Select, Icon, Tooltip, Button } from 'antd';
 import { getClientGroups } from '../../actions';
 const { Option } = Select;
 
@@ -22,7 +22,8 @@ class ClientGroups extends Component {
     const { value, loading, onChange, getClientGroups } = this.props;
     return (
       <div>
-        <label>Client Groups: </label>
+
+        <label>Client Groups</label>
         <div className="input-button-group input-button-group--right">
           <Select
             style={{ width: '100%' }}
