@@ -6,7 +6,7 @@ const NumberField = ({ id, label, value, onChange }) => {
     <div>
       <label>{label}</label>
       <InputNumber
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         onChange={(value) => {onChange(id, value)}}
         value={convertInt(value)}
         onKeyUp={(e) => {

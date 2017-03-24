@@ -6,7 +6,7 @@ const MedicareSearch = ({value, onChange}) => {
     <div>
       <label>Medicare Card Number</label>
       <Input
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         placeholder="Filter by Medicare Card Number"
         value={value}
         onChange={(e) => { onChange('medicare', e.target.value) }}

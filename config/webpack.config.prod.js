@@ -127,7 +127,7 @@ module.exports = {
         loader: 'babel',
         query: {
           plugins: [
-            ['import', [{ libraryName: "antd", style: true }]]
+            ['import', [{ libraryName: "antd", style: false }]]
           ]
         }
       },
@@ -170,7 +170,11 @@ module.exports = {
       // Remember to add the new extension(s) to the "url" loader exclusion list.
       {
         test: /\.less$/,
-        loader: 'style!css!postcss!less?{ modifyVars: { "@primary-color": "#f8a94c" }}'
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?importLoaders=1!postcss!less',
+          extractTextPluginOptions
+        )
       }
     ]
   },

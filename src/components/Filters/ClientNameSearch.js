@@ -6,7 +6,7 @@ const ClientNameSearch = ({value, onChange}) => {
     <div>
       <label>Client Name</label>
       <Input
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         placeholder="Filter by Client Name"
         value={value}
         onChange={(e) => { onChange('name', e.target.value) }}

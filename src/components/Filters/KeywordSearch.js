@@ -7,7 +7,7 @@ const KeywordSearch = ({value, onChange}) => {
     <div>
       <label>Keyword</label>
       <Search
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         placeholder="input keyword to search"
         value={value}
         onChange={(e) => { onChange('keyword', e.target.value) }}

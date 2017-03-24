@@ -19,22 +19,24 @@ class AllFilters extends Component {
       return (
         <div>
           <Collapse isOpened={showFilters}>
-            <div className="client-list__filters">
-              <div className="panel panel--colour-blue panel--no-panel-corner">
-                <div className="panel-heading">
-                  Filters
-                </div>
-                <div className="panel-body-wrapper">
-                  <div className="panel-body-inner">
-                    <GeneralFiltersDesktop />
+            <div>
+              <div className="client-list__filters">
+                <div className="panel panel--colour-blue panel--no-panel-corner">
+                  <div className="panel-heading">
+                    Filters
+                  </div>
+                  <div className="panel-body-wrapper">
+                    <div className="panel-body-inner">
+                      <GeneralFiltersDesktop />
 
-                    <hr className="page-box__sep" />
+                      <hr className="page-box__sep" />
 
-                    <CustomFieldFiltersDesktop />
+                      <CustomFieldFiltersDesktop />
 
-                    <div className="page-box__buttons">
-                      <ReloadButton onClick={() => getClientDataSource(1)}/>
-                      <ResetButton onClick={() => resetFilters()} />
+                      <div className="page-box__buttons">
+                        <ReloadButton onClick={() => getClientDataSource(1)}/>
+                        <ResetButton onClick={() => resetFilters()} />
+                      </div>
                     </div>
                   </div>
                 </div>

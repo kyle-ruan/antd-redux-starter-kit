@@ -5,6 +5,11 @@
     height: @fieldHeight;
     padding: 4px 6px;
     border-radius: 0px;
+
+    &:focus {
+        border-color: #e4e4e4;
+        box-shadow: none;
+    }
 }
 
 .ant-select-combobox .ant-select-search__field {
@@ -75,3 +80,27 @@
         box-shadow: 0px 5px 6px 1px rgba(115, 115, 115, 0.08);
     }
 }
+
+/** --------------- Input Group ----------- **/
+.input-button-group {
+    position: relative;
+
+    &--right {
+        padding-right: 32px;
+
+
+        input.ant-input {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .ant-btn {
+            position: absolute;
+            top: 0px;
+            right: 1px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+    }
+}
+/** -------------./ Input Group ----------- **/
