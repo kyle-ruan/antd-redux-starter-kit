@@ -6,7 +6,7 @@ const StringField = ({ id, label, value, onChange }) => {
     <div>
       <label>{label}: </label>
       <Input
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         value={value}
         onChange={(e) => { onChange(id, e.target.value)}}
         onKeyUp={(e) => {

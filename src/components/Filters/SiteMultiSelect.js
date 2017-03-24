@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Select, Icon, Input, Tooltip, Button } from 'antd';
+import { Select, Icon, Tooltip, Button } from 'antd';
 import { getSites } from '../../actions';
-const InputGroup = Input.Group;
 
 const { Option } = Select;
 class Sites extends Component {
@@ -24,9 +23,9 @@ class Sites extends Component {
     return (
       <div>
         <label>Sites: </label>
-        <InputGroup compact>
+        <div className="input-button-group input-button-group--right">
           <Select
-            style={{ width: 200 }}
+            style={{ width: '100%' }}
              multiple
              value={value}
              filterOption={(inputValue, option) => {
@@ -41,7 +40,7 @@ class Sites extends Component {
               <Icon type="reload" spin={loading} onClick={() => getSites() }/>
             </Button>
           </Tooltip>
-        </InputGroup>
+        </div>
       </div>
     );
   }

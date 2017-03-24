@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Select, Icon, Input, Tooltip, Button } from 'antd';
 import { getClientGroups } from '../../actions';
-const InputGroup = Input.Group;
-
 const { Option } = Select;
 
 class ClientGroups extends Component {
@@ -25,9 +23,9 @@ class ClientGroups extends Component {
     return (
       <div>
         <label>Client Groups: </label>
-        <InputGroup compact>
+        <div className="input-button-group input-button-group--right">
           <Select
-            style={{ width: 200 }}
+            style={{ width: '100%' }}
              multiple
              value={value}
              filterOption={(inputValue, option) => {
@@ -42,7 +40,7 @@ class ClientGroups extends Component {
              <Icon type="reload" spin={loading} onClick={() => getClientGroups() }/>
             </Button>
            </Tooltip>
-        </InputGroup>
+        </div>
       </div>
     );
   }

@@ -7,7 +7,7 @@ const BooleanField = ({ id, label, value, onChange }) => {
     <div>
       <label>{label}: </label>
       <Select
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
         value={value}
         onChange={(value) => { onChange(id, value)}}
       >
