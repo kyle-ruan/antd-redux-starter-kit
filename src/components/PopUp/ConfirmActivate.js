@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import axios from 'axios';
-import { apiConfig } from '../../configs';
 import { confirmGoToClient } from './ConfirmGoToClient';
+import { apiConfig } from '../../configs';
 
 const { coreplusWebClientURL, headers } = apiConfig;
 const { confirm } = Modal;

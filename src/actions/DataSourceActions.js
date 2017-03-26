@@ -7,6 +7,7 @@ export const getClientDataSource = (pageNumber, sorter = null) => {
     if (sorter !== null && typeof(sorter.field) === 'undefined') {
       sorter = null;
     }
+
     dispatch({
       type: 'CLIENT_START_LOADING',
       payload: { pageNumber, pageSize }
@@ -24,6 +25,7 @@ export const getClientDataSource = (pageNumber, sorter = null) => {
     if (showFilters) {
       dispatch({ type: 'TOGGLE_FILTERS'});
     }
+    
     api.getClients(pageNumber, pageSize, {
       keyword,
       name,

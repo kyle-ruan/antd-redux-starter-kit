@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Select, Icon, Tooltip, Button } from 'antd';
 import { getClientGroups } from '../../actions';
+
 const { Option } = Select;
 
 class ClientGroups extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CoreButton from '../Common/CoreButton';
+import FaIcon from '../Common/FaIcon';
 import { toggleFilters } from '../../actions';
-import CoreButton from '../CoreButton';
-import FaIcon from '../FaIcon';
 import { deviceConfig } from '../../configs';
 
 class AdvancedButton extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import ClientList from './ClientList';
-import PageHeader from './PageHeader';
 import { NewClientButton } from './Buttons';
+import ClientList from './Scenes/ClientList';
+import PageHeader from './Common/PageHeader';
 import '../assets/less/app.less';
 
 class App extends Component {

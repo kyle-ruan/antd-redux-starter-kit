@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
-import CoreButton from '../CoreButton';
+import CoreButton from '../Common/CoreButton';
 
 const ReloadButton = ({ loading, onClick }) => {
   return (

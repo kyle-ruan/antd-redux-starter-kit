@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'antd';
-import GeneralFiltersDesktop from './Filters/Desktop/GeneralFiltersDesktop';
-import CustomFieldFiltersDesktop from './Filters/Desktop/CustomFieldFiltersDesktop';
-import GeneralFiltersMobile from './Filters/Mobile/GeneralFiltersMobile';
-import CustomFieldFiltersMobile from './Filters/Mobile/CustomFieldFiltersMobile';
-import { toggleFilters, getClientDataSource, resetFilters } from '../actions';
 import Collapse from 'react-collapse';
-import { ReloadButton, ResetButton } from './Buttons';
-import { deviceConfig } from '../configs';
+import GeneralFiltersDesktop from './Desktop/GeneralFiltersDesktop';
+import CustomFieldFiltersDesktop from './Desktop/CustomFieldFiltersDesktop';
+import GeneralFiltersMobile from './Mobile/GeneralFiltersMobile';
+import CustomFieldFiltersMobile from './Mobile/CustomFieldFiltersMobile';
+import { ReloadButton, ResetButton } from '../Buttons';
+import { toggleFilters, getClientDataSource, resetFilters } from '../../actions';
+import { deviceConfig } from '../../configs';
 
 const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 

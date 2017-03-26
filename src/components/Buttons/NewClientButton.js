@@ -1,5 +1,5 @@
 import React from 'react';
-import CoreButton from '../CoreButton';
+import CoreButton from '../Common/CoreButton';
 
 const NewClientButton = () => {
   return (

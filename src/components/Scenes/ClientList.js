@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, BackTop, Affix } from 'antd';
-import ClientGrid from './ClientGrid';
-import { ToggleColumnButton, AdvancedOptionsButton } from './Buttons';
-import { getClientGroups, getSites } from '../actions';
-import GoToClient from './Filters/GoToClient';
-import AllFilters from './AllFilters';
-import { deviceConfig } from '../configs';
+import ClientGrid from '../Grid/ClientGrid';
+import { ToggleColumnButton, AdvancedOptionsButton } from '../Buttons';
+import GoToClient from '../Filters/GoToClient';
+import AllFilters from '../Filters/AllFilters';
+import { getClientGroups, getSites } from '../../actions';
+import { deviceConfig } from '../../configs';
 
 const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 

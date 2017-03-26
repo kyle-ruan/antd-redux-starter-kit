@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'antd';
-import ResizeHeader from './Grid/ResizeHeader';
-import { confirmActivate } from './PopUp/ConfirmActivate';
-import { StatusButtonGroup } from './Buttons';
-import { getClientDataSource, resetFilters, resizeColumn } from '../actions';
-import { deviceConfig } from '../configs';
+import ResizeHeader from './ResizeHeader';
+import { confirmActivate } from '../PopUp/ConfirmActivate';
+import { StatusButtonGroup } from '../Buttons';
+import { getClientDataSource, resetFilters, resizeColumn } from '../../actions';
+import { deviceConfig } from '../../configs';
 
 const isMobile = window.innerWidth <= deviceConfig.mobileWidth;
 
