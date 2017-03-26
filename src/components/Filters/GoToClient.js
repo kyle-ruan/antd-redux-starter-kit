@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Select } from 'antd';
-import axios from 'axios';
 import _ from 'lodash';
 import { confirmActivate } from '../PopUp/ConfirmActivate';
-import { apiConfig } from '../../configs';
+import { getClients } from '../../api';
 
 const { Option, OptGroup } = Select;
 export default class GoToClient extends Component {
@@ -23,10 +22,8 @@ export default class GoToClient extends Component {
       return;
 
     this.setState({ loading: true, value });
-    const { coreplusWebClientURL, headers } = apiConfig;
-    const requestUrl = `${coreplusWebClientURL}api/Client/GetClientListDataSource`;
 
-    axios.post(requestUrl, JSON.stringify({ Keyword: trimedValue }), { headers })
+    getClients(1, 50, { Keyword: trimedValue })
       .then(({data}) => {
         this.setState({ loading: false });
         const clients = data.Data;

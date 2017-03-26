@@ -1,5 +1,5 @@
-import { apiConfig } from '../configs';
 import axios from 'axios';
+import { apiConfig } from '../configs';
 
 const { coreplusWebClientURL, headers } = apiConfig;
 
