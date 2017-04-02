@@ -25,19 +25,12 @@ export const getClientDataSource = (pageNumber, sorter = null) => {
     if (showFilters) {
       dispatch({ type: 'TOGGLE_FILTERS'});
     }
-    
+
     api.getClients(pageNumber, pageSize, {
-      keyword,
-      name,
-      medicare,
-      details,
-      detailsSearchFields,
-      others,
-      othersSearchFields,
-      clientGroups,
-      sites,
-      status,
-      sorter,
+      keyword, name, medicare,
+      details, detailsSearchFields, others,
+      othersSearchFields, clientGroups,
+      sites, status, sorter,
       customFieldFilters: customFieldFilters.map(({ id, value }) => {
         return { id, value };
       })

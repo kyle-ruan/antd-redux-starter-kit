@@ -11,19 +11,26 @@ export default class GoToClient extends Component {
     this.state = {
       dataSource: [],
       inActiveClientIds: [],
-      value: '',
-      loading: false
+      value: ''
     };
   }
 
   handleChange(value) {
-    const trimedValue = value.trim();
-    if (value.length < 2)
+    this.setState({ value });
+    _.debounce(this.getClientsByKeyword(value), 250);
+  }
+
+  handleKeyDown(e) {
+    this.setState({ value: e.target.value });
+    _.debounce(this.getClientsByKeyword(e.target.value), 250);
+  }
+
+  getClientsByKeyword(keyword) {
+    const trimedKeyword = keyword.trim();
+    if (trimedKeyword.length < 2)
       return;
 
-    this.setState({ loading: true, value });
-
-    getClients(1, 50, { Keyword: trimedValue })
+    getClients(1, 50, { Keyword: trimedKeyword })
       .then(({data}) => {
         this.setState({ loading: false });
         const clients = data.Data;
@@ -96,10 +103,12 @@ export default class GoToClient extends Component {
         combobox
         placeholder="Go to client"
         style={{ width: 200 }}
+        value={ this.state.value }
         filterOption={false}
         defaultActiveFirstOption={false}
         showArrow={false}
-        onSearch={_.debounce(this.handleChange.bind(this), 500)}
+        onKeyDown={this.handleKeyDown.bind(this)}
+        onSearch={this.handleChange.bind(this)}
         onSelect={this.onSelect.bind(this)}
         notFoundContent="No client found"
       >

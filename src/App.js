@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import { NewClientButton } from './Buttons';
-import ClientList from './Scenes/ClientList';
-import PageHeader from './Common/PageHeader';
-import '../assets/less/app.less';
+import { NewClientButton } from './components/Buttons';
+import ClientList from './components/Scenes/ClientList';
+import PageHeader from './components/Common/PageHeader';
+import './assets/less/app.less';
 
 class App extends Component {
   render() {
